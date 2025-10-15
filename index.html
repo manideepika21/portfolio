@@ -30,36 +30,22 @@
         />
     </head>
 
-    <body class="tw-flex tw-min-h-[100vh] tw-flex-col tw-bg-[#fff] tw-font-mono">
-        <header class="tw-absolute tw-top-0 tw-z-20 tw-flex tw-h-[60px] tw-w-full tw-bg-opacity-0 tw-px-[5%] max-lg:tw-mr-auto max-lg:tw-px-4 lg:tw-justify-around">
-            <a class="tw-h-[100px] tw-p-[4px] tw-text-2xl tw-font-medium"  href="">MM</a>
-            <div class="collapsible-header animated-collapse max-lg:tw-shadow-md" id="collapsed-header-items">
-                <div class="tw-flex tw-h-full tw-w-max tw-gap-5 tw-text-base tw-text-black max-lg:tw-mt-[30px] max-lg:tw-flex-col max-lg:tw-place-items-end max-lg:tw-gap-5 lg:tw-mx-auto lg:tw-place-items-center">
-                    <a class="header-links" href="about.html"> About Me </a>
-                    <a class="header-links" href=""> Contact me </a>
-                </div>
-                <div class="tw-mx-4 tw-flex tw-place-items-center tw-gap-[20px] tw-text-base max-md:tw-w-full max-md:tw-flex-col max-md:tw-place-content-center">
-                    <a
-                        href="https://tally.so/r/woO0Kx"
-                        aria-label="signup"
-                        class="tw-flex tw-h-[40px] tw-place-items-center tw-gap-2 tw-rounded-full tw-bg-black tw-p-1 tw-pl-4 tw-text-white"
-                    >
-                        <span>Get in touch</span>
-                        <div class="tw-flex tw-h-[30px] tw-w-[30px] tw-place-content-center tw-place-items-center tw-rounded-full tw-bg-white tw-font-semibold tw-text-black">
-                            <i class="bi bi-arrow-up-right"></i>
-                        </div>
-                    </a>
+    <body class="tw-flex tw-min-h-[100vh] tw-flex-col tw-bg-[#fff]">
+        <!-- ==================== SECTION NAVIGATION ==================== -->
+        <nav id="section-nav" class="section-navigation">
+            <div class="nav-container">
+                <a href="#about" class="nav-logo-left">MM</a>
+                <div class="nav-links-center">
+                    <a href="#about" class="nav-link" data-section="about">About</a>
+                    <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+                    <a href="#experience" class="nav-link" data-section="experience">Experience</a>
+                    <a href="#education" class="nav-link" data-section="education">Education</a>
+                    <a href="#projects" class="nav-link" data-section="projects">Projects</a>
                 </div>
             </div>
-            <button
-                class="bi bi-list tw-absolute tw-right-3 tw-top-3 tw-z-50 tw-text-3xl tw-text-black lg:tw-hidden"
-                onclick="toggleHeader()"
-                aria-label="menu"
-                id="collapse-btn"
-            ></button>
-        </header>
+        </nav>
 
-        <section class="tw-relative tw-flex tw-min-h-[100vh] tw-w-full tw-max-w-[100vw] tw-flex-col tw-overflow-hidden max-lg:tw-p-4 max-md:tw-mt-[50px]">
+        <section id="about" class="hero-section tw-relative tw-flex tw-min-h-[100vh] tw-w-full tw-max-w-[100vw] tw-flex-col tw-overflow-hidden max-lg:tw-p-4">
             <div class="tw-flex tw-h-full tw-min-h-[100vh] tw-w-full tw-place-content-center tw-gap-6 tw-p-[5%] max-xl:tw-place-items-center max-lg:tw-flex-col">
                 <div class="tw-flex tw-flex-col tw-place-content-center">
                     <div class="tw-flex tw-flex-wrap tw-text-7xl tw-font-semibold tw-uppercase tw-leading-[85px] max-lg:tw-text-4xl max-md:tw-leading-snug">
@@ -84,44 +70,35 @@
                             href="./assets/ManideepikaReddyMyaka.pdf"
                             aria-label="resume"
                             target="_blank"
-                            class="tw-flex tw-h-[48px] tw-place-items-center tw-gap-2 tw-rounded-full tw-border-[1px] tw-border-solid tw-border-black tw-bg-white tw-p-1 tw-pl-4 tw-text-black tw-transition-colors tw-duration-[0.5s] hover:tw-bg-black hover:tw-text-white"
+                            class="tw-flex tw-h-[48px] tw-place-items-center tw-gap-2 tw-rounded-full tw-bg-black tw-p-1 tw-pl-4 tw-text-white"
                         >
                             <span>View Resume</span>
-                            <div class="tw-flex tw-h-[30px] tw-w-[30px] tw-place-content-center tw-place-items-center tw-rounded-full tw-bg-black tw-font-semibold tw-text-white">
+                            <div class="tw-flex tw-h-[30px] tw-w-[30px] tw-place-content-center tw-place-items-center tw-rounded-full tw-bg-white tw-font-semibold tw-text-black">
                                 <i class="bi bi-arrow-up-right"></i>
                             </div>
                         </a>
                         <!-- Social Icons -->
-    <div class="tw-flex tw-gap-8 tw-items-center">
-        <!-- LinkedIn -->
-        <a
-            href="https://www.linkedin.com/in/manideepikareddymyaka/"
-            target="_blank"
-            aria-label="LinkedIn"
-            class="tw-flex tw-h-[78px] tw-w-[78px] tw-items-center tw-justify-center tw-rounded-full tw-border tw-border-black tw-bg-white tw-text-black"
-        >
-            <i class="bi bi-linkedin tw-text-4xl"></i>
-        </a>
+                        <div class="tw-flex tw-gap-8 tw-items-center">
+                            <!-- LinkedIn -->
+                            <a
+                                href="https://www.linkedin.com/in/manideepikareddymyaka/"
+                                target="_blank"
+                                aria-label="LinkedIn"
+                                class="tw-flex tw-h-[78px] tw-w-[78px] tw-items-center tw-justify-center tw-rounded-full tw-border tw-border-black tw-bg-white tw-text-black"
+                            >
+                                <i class="bi bi-linkedin tw-text-4xl"></i>
+                            </a>
 
-        <!-- GitHub -->
-        <a
-            href="https://github.com/manideepika21"
-            target="_blank"
-            aria-label="GitHub"
-            class="tw-flex tw-h-[78px] tw-w-[78px] tw-items-center tw-justify-center tw-rounded-full tw-border tw-border-black tw-bg-white tw-text-black"
-        >
-            <i class="bi bi-github tw-text-4xl"></i>
-        </a>
-
-        <!-- Mail -->
-        <a
-            href="mailto:mmyaka21@gmail.com"
-            aria-label="Email"
-            class="tw-flex tw-h-[78px] tw-w-[78px] tw-items-center tw-justify-center tw-rounded-full tw-border tw-border-black tw-bg-white tw-text-black"
-        >
-            <i class="bi bi-envelope-fill tw-text-4xl"></i>
-        </a>
-    </div>
+                            <!-- GitHub -->
+                            <a
+                                href="https://github.com/manideepika21"
+                                target="_blank"
+                                aria-label="GitHub"
+                                class="tw-flex tw-h-[78px] tw-w-[78px] tw-items-center tw-justify-center tw-rounded-full tw-border tw-border-black tw-bg-white tw-text-black"
+                            >
+                                <i class="bi bi-github tw-text-4xl"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -138,7 +115,7 @@
         </section>
 
         <!-- ==================== SKILLS SECTION ==================== -->
-        <section class="tw-relative tw-mt-10 tw-flex tw-flex-col tw-items-center tw-w-full lg:tw-p-6">
+        <section id="skills" class="tw-relative tw-mt-10 tw-flex tw-flex-col tw-items-center tw-w-full lg:tw-p-6">
             <div class="tw-w-full tw-rounded-xl tw-p-6 tw-space-y-8">
                 <div class="reveal-up tw-flex tw-justify-center">
                     <h2 class="tw-text-4xl tw-font-semibold">Skills</h2>
@@ -224,10 +201,10 @@
         </section>
 
         <!-- ==================== WORK EXPERIENCE SECTION ==================== -->
-        <section class="tw-relative tw-flex tw-min-h-[100vh] tw-w-full tw-max-w-fit tw-flex-col tw-place-content-center tw-place-items-center lg:tw-p-6">
+        <section id="experience" class="tw-relative tw-flex tw-min-h-[100vh] tw-w-full tw-max-w-fit tw-flex-col tw-place-content-center tw-place-items-center lg:tw-p-6">
             <div class="tw-flex tw-h-full tw-w-full tw-justify-around tw-gap-8 tw-rounded-xl tw-bg-white tw-p-4 max-lg:tw-max-w-full max-lg:tw-flex-col">
                 <div class="reveal-up tw-flex tw-h-full tw-w-[50%] tw-place-content-center max-lg:tw-w-full lg:tw-sticky lg:tw-top-[20%]">
-                    <h1 class="tw-text-center tw-text-4xl tw-font-small max-lg:tw-text-3xl">
+                    <h1 class="tw-text-center tw-text-4xl tw-font-semibold max-lg:tw-text-3xl">
                         Work Experience
                     </h1>
                 </div>               
@@ -347,10 +324,10 @@
         </section>
 
         <!-- ==================== EDUCATION SECTION ==================== -->
-        <section class="tw-relative tw-mt-10 tw-flex tw-flex-col tw-items-center tw-w-full lg:tw-p-6">
+        <section id="education" class="tw-relative tw-mt-10 tw-flex tw-flex-col tw-items-center tw-w-full lg:tw-p-6">
             <div class="tw-w-full tw-max-w-5xl tw-p-6">
-                <div class="tw-text-center tw-mb-10">
-                <h2 class="tw-text-4xl tw-font-semibold">Education</h2>
+                <div class="reveal-up tw-text-center tw-mb-10">
+                <h1 class="tw-text-4xl tw-font-semibold">Education</h1>
                 </div>
                 <!-- Timeline container -->
                 <div class="timeline tw-relative tw-flex tw-flex-col tw-items-center tw-w-full">
@@ -391,43 +368,43 @@
 
         <!-- ==================== PROJECTS SECTION ==================== -->
         <section class="projects-section" id="projects">
-            <div class="projects-header">
+            <div class="reveal-up projects-header">
                 <h2>View my Projects</h2>
             </div>
 
-            <div class="projects-container">
+            <div class="reveal-up projects-container">
                 <!-- Project 1 -->
-                <div class="project-card" onclick="openModal('ellipsis')">
-                <div class="project-image">
-                    <img src="./assets/images/ellipsis.png" alt="Ellipsis" />
-                </div>
-                <h3>Ellipsis</h3>
-                <p>
-                    Fully automated, AI-driven agent capable of
-                    producing human-like, high-quality podcasts.
-                </p>
-                <span class="learn-more">Learn more →</span>
+                <div class="reveal-up project-card" onclick="openModal('ellipsis')">
+                    <div class="project-image">
+                        <img src="./assets/images/ellipsis.png" alt="Ellipsis" />
+                    </div>
+                    <h3 tw-text-xl tw-font-semibold>Ellipsis</h3>
+                    <p>
+                        Fully automated, AI-driven agent capable of
+                        producing human-like, high-quality podcasts.
+                    </p>
+                    <span class="learn-more">Learn more →</span>
                 </div>
 
                 <!-- Project 2 -->
-                <div class="project-card" onclick="openModal('article2')">
-                <div class="project-image">
-                    <img src="./assets/images/tumor.png" alt="Article 2" />
-                </div>
-                <h3>Brain Tumor Detection</h3>
-                <p>
-                    CNN-based classifier that classifies MRI scans into glioma, meningioma,
-                    pituitary, or no tumor. 
-                </p>
-                <span class="learn-more">Learn more →</span>
+                <div class="reveal-up project-card" onclick="openModal('article2')">
+                    <div class="project-image">
+                        <img src="./assets/images/tumor.png" alt="Article 2" />
+                    </div>
+                    <h3 tw-text-xl tw-font-semibold>Brain Tumor Detection</h3>
+                    <p>
+                        CNN-based classifier that classifies MRI scans into glioma, meningioma,
+                        pituitary, or no tumor. 
+                    </p>
+                    <span class="learn-more">Learn more →</span>
                 </div>
 
                 <!-- Project 3: 86-No-More -->
-                <div class="project-card" onclick="openModal('article3')">
+                <div class="reveal-up project-card" onclick="openModal('article3')">
                     <div class="project-image">
                         <img src="./assets/images/banner.gif" alt="86-No-More" />
                     </div>
-                    <h3>86-No-More</h3>
+                    <h3 tw-text-xl tw-font-semibold>86-No-More</h3>
                     <p>
                         Inventory management system that predicts ingredient
                         shortages, sends alerts, and enhances sustainability.
@@ -592,8 +569,8 @@
 
         <!-- ==================== TESTIMONIAL SECTION ==================== -->
         <section class="testimonial-section">
-            <h3 class="tw-text-4xl tw-font-semibold">What people say about me ✨</h3>
-            <div class="carousel">
+            <h3 class="reveal-up tw-text-4xl tw-font-semibold">What people say about me ✨</h3>
+            <div class="reveal-up carousel">
                 <div class="slide active">
                     <p>"Manideepika is one of the most dependable student employees I have ever worked with. 
                         She takes the responsibility of her role seriously and performs exceptionally well. 
@@ -712,54 +689,24 @@
                 <div class="marquee-track">
                 <!-- First set -->
                 <div class="marquee-card">
-                    <img src="./assets/images/p1.jpg" alt="SAS Logo" />
+                    <img src="./assets/images/p1.png" alt="ATO" />
                 </div>
                 <div class="marquee-card">
-                    <img src="./assets/images/p2.jpg" alt="Simplified Logo" />
+                    <img src="./assets/images/p2.png" alt="Grad" />
                 </div>
                 <div class="marquee-card">
-                    <img src="./assets/images/p3.jpg" alt="Toshiba Logo" />
-                </div>
-                <div class="marquee-card">
-                    <img src="./assets/images/p4.jpg" alt="VibeSea Logo" />
-                </div>
-                <div class="marquee-card">
-                    <img src="./assets/images/p5.jpg" alt="Hints Logo" />
-                </div>
-                <div class="marquee-card">
-                    <img src="./assets/images/p7.jpg" alt="Simplified Logo" />
-                </div>
-                <div class="marquee-card">
-                    <img src="./assets/images/p9.jpg" alt="VibeSea Logo" />
-                </div>
-                <div class="marquee-card">
-                    <img src="./assets/images/p11.jpg" alt="Hints Logo" />
+                    <img src="./assets/images/p3.png" alt="ATO" />
                 </div>
 
                 <!-- Duplicate set for infinite loop -->
                 <div class="marquee-card">
-                    <img src="./assets/images/p1.jpg" alt="" />
+                    <img src="./assets/images/p1.png" alt="" />
                 </div>
                 <div class="marquee-card">
-                    <img src="./assets/images/p2.jpg" alt="" />
+                    <img src="./assets/images/p2.png" alt="" />
                 </div>
                 <div class="marquee-card">
-                    <img src="./assets/images/p3.jpg" alt="" />
-                </div>
-                <div class="marquee-card">
-                    <img src="./assets/images/p4.jpg" alt="" />
-                </div>
-                <div class="marquee-card">
-                    <img src="./assets/images/p5.jpg" alt="" />
-                </div>
-                <div class="marquee-card">
-                    <img src="./assets/images/p7.jpg" alt="" />
-                </div>
-                <div class="marquee-card">
-                    <img src="./assets/images/p9.jpg" alt="" />
-                </div>
-                <div class="marquee-card">
-                    <img src="./assets/images/p11.jpg" alt="" />
+                    <img src="./assets/images/p3.png" alt="" />
                 </div>
             </div>  
         </section>
@@ -804,4 +751,54 @@
     ></script>
 
     <script src="./index.js"></script>
+    
+    <!-- Section Navigation Script -->
+    <script>
+        // Section Navigation Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section[id]');
+            
+            // Function to update active nav link
+            function updateActiveNav() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (window.pageYOffset >= sectionTop - 200) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-section') === current) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            // Smooth scrolling for nav links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('data-section');
+                    const targetSection = document.getElementById(targetId);
+                    
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Update active nav on scroll
+            window.addEventListener('scroll', updateActiveNav);
+            
+            // Set initial active state
+            updateActiveNav();
+        });
+    </script>
 </html>

@@ -32,6 +32,14 @@ html {
     line-height: 1.6;
 }
 
+body {
+    font-family: "Outfit", sans-serif;
+}
+
+* {
+    font-family: "Outfit", sans-serif;
+}
+
 header > .collapsible-header{
     display: flex;
     gap: 1rem;
@@ -202,7 +210,7 @@ header > .collapsible-header{
     
 }
 .marquee-wrapper {
-  overflow: hidden;
+  overflow: visible;
   position: relative;
   width: 100%;
 }
@@ -216,15 +224,22 @@ header > .collapsible-header{
 
 .marquee-card {
   flex: 0 0 auto;
-  width: 120px;
-  height: 180px;
-  background: #e7e6e685;
+  width: 200px;
+  height: 260px;
+  background: transparent;
   border-radius: 0;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  box-shadow: none;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.3s;
+  border: 1px solid rgba(0,0,0,0.1);
+  outline: none;
+  transform-origin: center center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 .marquee-card img {
@@ -251,12 +266,12 @@ header > .collapsible-header{
 }
 
 
-/* Alternate tilts */
+/* Slight tilts for visual interest */
 .marquee-card:nth-child(odd) {
-  transform: rotate(-6deg);
+  transform: rotate(-3deg);
 }
 .marquee-card:nth-child(even) {
-  transform: rotate(6deg);
+  transform: rotate(3deg);
 }
 .flex-container {
   display: flex;
@@ -326,7 +341,7 @@ header > .collapsible-header{
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-top: 1rem; /* adds gap between header and chips */
+  margin-top: 1rem; 
 }
 
 .skill-buttons button {
@@ -769,3 +784,75 @@ button.next:hover { transform: translateY(-50%) scale(1.2); }
   }
 }
 
+/* ==================== SECTION NAVIGATION ==================== */
+.section-navigation {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #fff; /* important for visibility */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.nav-logo-left {
+  text-decoration: none;
+  color: #000;
+  font-weight: 700;
+  font-size: 20px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  padding: 8px 0;
+}
+
+.nav-logo-left:hover {
+  color: #333;
+  transform: translateY(-1px);
+}
+
+.nav-links-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  align-items: center;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  padding: 8px 0;
+}
+
+.nav-link:hover {
+  color: #000;
+  transform: translateY(-1px);
+}
+
+.nav-link.active {
+  color: #000;
+  font-weight: 600;
+}
+
+body, main {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+html {
+  scroll-padding-top: 80px; /* adjust if your nav height differs */
+}

@@ -115,9 +115,20 @@ sections.forEach((sec) => {
         duration: 0.8,
         y: "0%",
         stagger: 0.2,
+        ease: "power2.out"
     })
 
-
+    // Also animate any reveal-hero-text elements in sections (not just hero)
+    const heroTextElements = sec.querySelectorAll(".reveal-hero-text")
+    if (heroTextElements.length > 0 && !sec.classList.contains('hero-section')) {
+        revealUptimeline.to(heroTextElements, {
+            opacity: 1,
+            duration: 0.8,
+            y: "0%",
+            stagger: 0.15,
+            ease: "power2.out"
+        }, "-=0.4") // Start slightly before the reveal-up elements finish
+    }
 })
 
 // Collapsible education toggles
