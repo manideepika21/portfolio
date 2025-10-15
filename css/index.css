@@ -1,0 +1,771 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root{
+
+    --btn-color: #fdfdfd;/* button color*/
+    --btn-bg: #0d0d0d;/* button bg color*/
+
+    --primary-text-color: #000;
+    --header-link-hover: #dddcdccf;
+    --footer-link-hover: #6dbb00;
+    --input-focus-bd-color: #0d0d0d;
+}
+
+* {
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+}
+.reveal-hero-text {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  word-spacing: normal;
+  letter-spacing: 0;
+  line-height: 1.6;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: "Outfit", sans-serif;
+    letter-spacing: 0;
+    word-spacing: normal;
+    line-height: 1.6;
+}
+
+header > .collapsible-header{
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    background-color: inherit;
+    place-content: center;
+    overflow: hidden;
+    transition: width 0.3s ease;
+}
+
+.outline-effect {
+    color: black;
+    -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+    -webkit-text-stroke: 2px black;
+}
+
+.animated-collapse{
+    transition: width 0.3s ease;
+}  
+.header-links {
+    display: flex;
+    align-items: center;
+    min-width: fit-content;
+    border-radius: 25px;
+    padding: 5px 15px;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+
+.header-links:hover {
+    background-color: var(--header-link-hover);
+}
+
+.material-icons.md-40 { 
+    font-size: 40px; 
+}
+
+.primary-text-color{
+    color: var(--primary-text-color);
+}
+
+.opacity-0{
+    opacity: 0 !important;
+}
+
+.opacity-100{
+    opacity: 100 !important;
+}
+
+.btn{
+    padding: 10px 15px;
+    width: max-content;
+    border-radius: 25px;
+    color: var(--btn-color);
+    background-color: var(--btn-bg);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+}
+
+.btn:disabled{
+    cursor: default;
+}
+
+.input{
+    padding: 10px;
+    background-color: transparent;
+    border-radius: 25px;
+    /* outline: none; */
+    min-width: 100px;
+    border: 2px solid #818080;
+    transition: border 0.3s;
+}
+
+.input:active, .input:focus, .input:focus-within{
+    border: 2px solid var(--input-focus-bd-color);
+}
+
+.input-error{
+    border-bottom: 3px solid #ff1e1e;
+}
+
+.input-error:focus-within{
+    border-bottom: 3px solid #fd0101;
+}
+
+/* Navigation dots styling */
+.dots-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-link{
+    color: #0d0d0d;
+    transition: color 0.3s;
+}
+
+.footer-link:hover{
+    color: var(--footer-link-hover);
+}
+
+
+.review-container {
+    position: relative;
+    max-width: 600px;
+    margin: auto;
+}
+
+.review-card{
+    box-shadow: 0px 2px 4px #757474a0;
+    border-radius: 15px;
+    /* width: 200px; */
+    /* height: 550px; */
+    padding: 10px;
+}
+
+/* --------- collapsible div ---------- */
+.collapsible {
+    background-color: #f3f0f0;
+    color: #2b2929;
+    /* cursor: pointer; */
+    padding: 5px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 16px;
+    transition: 0.4s;
+}
+
+/* Style for the collapsible content */
+.content {
+    padding: 0 18px;
+    /* display: none; */
+    height: 0px;
+    overflow: hidden;
+    background-color: transparent;
+    transition: height 0.5s;
+    text-align: justify;
+    margin-top: 10px;
+}
+
+@media not all and (min-width: 1024px) {
+    header .collapsible-header {
+        position: fixed;
+        right: 0px;
+        flex-direction: column;
+        opacity: 0;
+        height: 100vh;
+        min-height: 100vh;
+        height: 100dvh;
+        width: 0vw;
+        justify-content: space-between;
+        padding: 5px;
+        padding-top: 5%;
+        padding-bottom: 5%;
+        place-items: end;
+        background-color: #ffffff;
+        color: #000000;
+        overflow-y: auto;
+        box-shadow: 2px 0px 3px #000;
+    }
+
+    .header-links{
+        color: black;
+    }
+    
+}
+.marquee-wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.marquee-track {
+  display: flex;
+  gap: 2rem;
+  animation: scroll 25s linear infinite;
+  will-change: transform;
+}
+
+.marquee-card {
+  flex: 0 0 auto;
+  width: 120px;
+  height: 180px;
+  background: #e7e6e685;
+  border-radius: 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s;
+}
+
+.marquee-card img {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+  filter: grayscale(80%);
+  opacity: 0.7;
+  transition: all 0.3s ease-in-out;
+}
+
+.marquee-card:hover {
+  transform: rotate(0deg) scale(1.05);
+}
+
+.marquee-card:hover img {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+
+/* Alternate tilts */
+.marquee-card:nth-child(odd) {
+  transform: rotate(-6deg);
+}
+.marquee-card:nth-child(even) {
+  transform: rotate(6deg);
+}
+.flex-container {
+  display: flex;
+  justify-content: space-between; /* pushes them to opposite ends */
+  align-items: center;            /* keeps them vertically aligned */
+  width: 100%;                    /* makes sure it spans full width */
+}
+
+/* Ensure Bootstrap Icons are loaded */
+.bi {
+  font-family: "bootstrap-icons" !important;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* Typewriter effect */
+.typewriter {
+  display: inline-block;
+  overflow: hidden;
+  border-right: 3px solid black; /* cursor line */
+  white-space: nowrap;
+  animation: typing 2.5s steps(20, end), blink 0.6s step-end 4;
+  animation-fill-mode: forwards; /* keep final state */
+}
+
+/* typing animation */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* blinking cursor (only blinks a few times) */
+@keyframes blink {
+  50% { border-color: transparent; }
+  100% { border-color: transparent; } /* ensures it disappears at end */
+}
+/* Grid Layout */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .skills-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* Skill Buttons → White Chips */
+.skill-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem; /* adds gap between header and chips */
+}
+
+.skill-buttons button {
+  background-color: #ffffff;  /* white chip background */
+  color: #000000;             /* black text */
+  border: 1px solid #e5e7eb;  /* subtle light gray border */
+  border-radius: 9999px;      /* pill shape */
+  padding: 0.35rem 0.85rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: default;            /* not clickable */
+  transition: none;           /* no hover animation */
+}
+
+/* Remove hover effect */
+.skill-buttons button:hover {
+  background-color: #ffffff;
+}
+
+/* Pastel background colors for cards */
+.skill-card:nth-child(1) {
+  background-color: #eff6ff !important; /* blue-50 */
+}
+
+.skill-card:nth-child(2) {
+  background-color: #f0fdf4 !important; /* green-50 */
+}
+
+.skill-card:nth-child(3) {
+  background-color: #fefce8 !important; /* yellow-50 */
+}
+
+.skill-card:nth-child(4) {
+  background-color: #fdf2f8 !important; /* pink-50 */
+}
+
+.skill-card:nth-child(5) {
+  background-color: #f5f3ff !important; /* purple-50 */
+}
+
+
+.testimonial-section {
+  text-align: center;
+  max-width: 600px;
+  margin: 80px auto;
+  position: relative;
+}
+.carousel {
+  position: relative;
+  overflow: hidden;
+}
+.slide {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+.slide.active {
+  display: block;
+  opacity: 1;
+}
+button.prev, button.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  color: black;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  opacity: 0;                /* hidden by default */
+  transition: opacity 0.3s ease, transform 0.2s ease;
+  z-index: 10;
+}
+
+/* Position the buttons */
+button.prev { left: 10px; }
+button.next { right: 10px; }
+
+/* Show arrows when hovering over the carousel */
+.carousel:hover button.prev,
+.carousel:hover button.next {
+  opacity: 1;
+}
+
+/* --- TESTIMONIAL SECTION (Minimalist Style) --- */
+.testimonial-section {
+  text-align: center;
+  padding: 4rem 2rem;
+  max-width: 800px;
+  margin: 4rem auto;
+}
+
+/* Heading */
+.testimonial-section h3 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 2rem; /* gap between heading and text */
+}
+
+/* Carousel container */
+.carousel {
+  position: relative;
+}
+
+/* Testimonial text */
+.slide {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.6s ease;
+}
+
+.slide.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Testimonial paragraph */
+.slide p {
+  font-size: 1.2rem;
+  color: #333;
+  line-height: 1.8;
+  font-style: italic;
+  position: relative;
+  padding: 0 1rem;
+}
+
+/* Author name */
+.slide h4 {
+  margin-top: 1.5rem;
+  color: #111;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* Timeline vertical line */
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background-color: #d1d5db; /* gray-300 */
+  z-index: 0;
+}
+
+/* Timeline item */
+.timeline-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Cap icon as timeline marker */
+.timeline-icon {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  background: none;         /* Remove white background */
+  border: none;             /* Remove border */
+  width: auto;              /* Let the icon size define its width */
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Base state before animation */
+.timeline-item {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 2s ease-out;
+}
+
+/* Active state when visible */
+.timeline-item.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Adjust spacing and responsiveness */
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 0.5rem;
+  }
+
+  .timeline-icon {
+    left: 0.5rem;
+    transform: none;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .timeline-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .timeline-item > div {
+    text-align: left !important;
+    padding-left: 3rem !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+  }
+}
+
+.timeline-item.right {
+  flex-direction: row-reverse;
+}
+
+.timeline-item.right .tw-text-left {
+  text-align: left;
+  margin-right: 12rem !important; /* reduced from 2rem */
+}
+
+.timeline-item.left .tw-text-right {
+  text-align: right;
+  width: 45% !important; /* was 50%, brings it closer */
+  margin-right: -4rem !important; /* tweak spacing */
+}
+
+/* Add subtle hover motion */
+button.prev:hover { transform: translateY(-50%) scale(1.2); }
+button.next:hover { transform: translateY(-50%) scale(1.2); }
+
+/* --- PROJECTS SECTION --- */
+.projects-section {
+  width: 100%;
+  min-height: 80vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.projects-header h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.projects-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.project-card {
+  width: 350px;
+  background: rgba(237, 236, 236, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.project-card h3 {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+.project-card p {
+  color: #555;
+  margin-top: 0.5rem;
+  flex-grow: 1;
+}
+
+.learn-more {
+  color: #007bff;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+/* --- MODAL STYLING --- */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #ffffff;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 1000px;
+  max-height: 75vh;  
+  overflow-y: auto; 
+  padding: 2.5rem;
+  position: relative;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  color: #222;
+  line-height: 1.6;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Title */
+.modal-content h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: left;
+  color: #111;
+}
+
+/* Paragraphs */
+.modal-content p {
+  font-size: 1rem;
+  margin: 0.8rem 0;
+  color: #333;
+  text-align: justify;
+}
+
+/* List */
+.modal-content ul {
+  margin: 1rem 0 1.5rem 1.5rem;
+  padding-left: 1rem;
+  color: #444;
+}
+.modal-content li {
+  margin-bottom: 0.4rem;
+}
+
+/* Subheadings */
+.modal-content h4 {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #111;
+}
+
+
+
+/* GitHub button */
+.modal-content .btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  background: #848687;
+  color: #fff;
+  padding: 0.7rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.modal-content .btn:hover {
+  background: #0056b3;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 12px; /* ✅ clean and modern spacing */
+  margin-top: 1.5rem;
+  flex-wrap: wrap; /* optional, helps on smaller screens */
+}
+
+/* Close button */
+.close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 1.5rem;
+  color: #777;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.close:hover {
+  color: #000;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

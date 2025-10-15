@@ -1,0 +1,807 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Manideepika Reddy Myaka</title>
+        <meta name="description" content="Portfolio of Manideepika Reddy Myaka – Software Engineer specializing in AI, ML, and Cloud." />
+        <link rel="icon" href="data:image/svg+xml,
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+        <rect width='100' height='100' fill='black'/>
+        <text x='50%' y='70%' font-size='50' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'>MM</text>
+        </svg>">
+
+        <meta property="og:title" content="Manideepika - Portfolio" />
+        <meta property="og:description" content="Explore my work in AI, automation, and cloud systems." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://github.com/manideepika21" />
+        <meta property="og:image" content="" />
+
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./css/tailwind-build.css" />
+        <link rel="stylesheet" href="css/index.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"
+            integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+    </head>
+
+    <body class="tw-flex tw-min-h-[100vh] tw-flex-col tw-bg-[#fff] tw-font-mono">
+        <header class="tw-absolute tw-top-0 tw-z-20 tw-flex tw-h-[60px] tw-w-full tw-bg-opacity-0 tw-px-[5%] max-lg:tw-mr-auto max-lg:tw-px-4 lg:tw-justify-around">
+            <a class="tw-h-[100px] tw-p-[4px] tw-text-2xl tw-font-medium"  href="">MM</a>
+            <div class="collapsible-header animated-collapse max-lg:tw-shadow-md" id="collapsed-header-items">
+                <div class="tw-flex tw-h-full tw-w-max tw-gap-5 tw-text-base tw-text-black max-lg:tw-mt-[30px] max-lg:tw-flex-col max-lg:tw-place-items-end max-lg:tw-gap-5 lg:tw-mx-auto lg:tw-place-items-center">
+                    <a class="header-links" href="about.html"> About Me </a>
+                    <a class="header-links" href=""> Contact me </a>
+                </div>
+                <div class="tw-mx-4 tw-flex tw-place-items-center tw-gap-[20px] tw-text-base max-md:tw-w-full max-md:tw-flex-col max-md:tw-place-content-center">
+                    <a
+                        href="https://tally.so/r/woO0Kx"
+                        aria-label="signup"
+                        class="tw-flex tw-h-[40px] tw-place-items-center tw-gap-2 tw-rounded-full tw-bg-black tw-p-1 tw-pl-4 tw-text-white"
+                    >
+                        <span>Get in touch</span>
+                        <div class="tw-flex tw-h-[30px] tw-w-[30px] tw-place-content-center tw-place-items-center tw-rounded-full tw-bg-white tw-font-semibold tw-text-black">
+                            <i class="bi bi-arrow-up-right"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <button
+                class="bi bi-list tw-absolute tw-right-3 tw-top-3 tw-z-50 tw-text-3xl tw-text-black lg:tw-hidden"
+                onclick="toggleHeader()"
+                aria-label="menu"
+                id="collapse-btn"
+            ></button>
+        </header>
+
+        <section class="tw-relative tw-flex tw-min-h-[100vh] tw-w-full tw-max-w-[100vw] tw-flex-col tw-overflow-hidden max-lg:tw-p-4 max-md:tw-mt-[50px]">
+            <div class="tw-flex tw-h-full tw-min-h-[100vh] tw-w-full tw-place-content-center tw-gap-6 tw-p-[5%] max-xl:tw-place-items-center max-lg:tw-flex-col">
+                <div class="tw-flex tw-flex-col tw-place-content-center">
+                    <div class="tw-flex tw-flex-wrap tw-text-7xl tw-font-semibold tw-uppercase tw-leading-[85px] max-lg:tw-text-4xl max-md:tw-leading-snug">
+                        <span class="tw-bg-green-200 tw-p-1 tw-px-6">
+                            Hi, I'm Mani
+                        </span>
+                        <br />
+                        <span class="tw-text-5xl max-lg:tw-text-2xl">
+                            Software Engineer
+                        </span>
+                    </div>
+                    <div class="reveal-hero-text tw-mt-2 tw-max-w-[450px] tw-p-2 max-lg:tw-max-w-full">
+                        I build accessible software that blends AI, cloud, and automation, 
+                        turning complex challenges into simple, scalable solutions. 
+                        My work spans machine learning, test automation,  
+                        cloud architecture, and full-stack development
+                        all driven by a passion for solving real world problems. 
+                    </div>
+
+                    <div class="reveal-hero-text tw-mt-4 tw-flex tw-place-items-center tw-gap-8 tw-overflow-hidden tw-p-2">
+                        <a
+                            href="./assets/ManideepikaReddyMyaka.pdf"
+                            aria-label="resume"
+                            target="_blank"
+                            class="tw-flex tw-h-[48px] tw-place-items-center tw-gap-2 tw-rounded-full tw-border-[1px] tw-border-solid tw-border-black tw-bg-white tw-p-1 tw-pl-4 tw-text-black tw-transition-colors tw-duration-[0.5s] hover:tw-bg-black hover:tw-text-white"
+                        >
+                            <span>View Resume</span>
+                            <div class="tw-flex tw-h-[30px] tw-w-[30px] tw-place-content-center tw-place-items-center tw-rounded-full tw-bg-black tw-font-semibold tw-text-white">
+                                <i class="bi bi-arrow-up-right"></i>
+                            </div>
+                        </a>
+                        <!-- Social Icons -->
+    <div class="tw-flex tw-gap-8 tw-items-center">
+        <!-- LinkedIn -->
+        <a
+            href="https://www.linkedin.com/in/manideepikareddymyaka/"
+            target="_blank"
+            aria-label="LinkedIn"
+            class="tw-flex tw-h-[78px] tw-w-[78px] tw-items-center tw-justify-center tw-rounded-full tw-border tw-border-black tw-bg-white tw-text-black"
+        >
+            <i class="bi bi-linkedin tw-text-4xl"></i>
+        </a>
+
+        <!-- GitHub -->
+        <a
+            href="https://github.com/manideepika21"
+            target="_blank"
+            aria-label="GitHub"
+            class="tw-flex tw-h-[78px] tw-w-[78px] tw-items-center tw-justify-center tw-rounded-full tw-border tw-border-black tw-bg-white tw-text-black"
+        >
+            <i class="bi bi-github tw-text-4xl"></i>
+        </a>
+
+        <!-- Mail -->
+        <a
+            href="mailto:mmyaka21@gmail.com"
+            aria-label="Email"
+            class="tw-flex tw-h-[78px] tw-w-[78px] tw-items-center tw-justify-center tw-rounded-full tw-border tw-border-black tw-bg-white tw-text-black"
+        >
+            <i class="bi bi-envelope-fill tw-text-4xl"></i>
+        </a>
+    </div>
+                    </div>
+                </div>
+
+                <div class="tw-flex tw-w-full tw-max-w-[50%] tw-place-content-center tw-place-items-center tw-overflow-hidden max-lg:tw-max-w-[unset]">
+                    <div class="tw-relative tw-flex tw-max-h-[580px] tw-min-h-[450px] tw-min-w-[350px] tw-max-w-[650px] tw-overflow-hidden max-lg:tw-h-fit max-lg:tw-max-h-[320px] max-lg:tw-min-h-[180px] max-lg:tw-w-[320px] max-lg:tw-min-w-[320px]">
+                        <img
+                            src="./assets/images/mani.jpg"
+                            alt="app"
+                            class="reveal-hero-img tw-z-[1] tw-h-full tw-w-full tw-object-contain"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== SKILLS SECTION ==================== -->
+        <section class="tw-relative tw-mt-10 tw-flex tw-flex-col tw-items-center tw-w-full lg:tw-p-6">
+            <div class="tw-w-full tw-rounded-xl tw-p-6 tw-space-y-8">
+                <div class="reveal-up tw-flex tw-justify-center">
+                    <h2 class="tw-text-4xl tw-font-semibold">Skills</h2>
+                </div>
+
+                <div id="skills-grid" class="skills-grid tw-grid tw-gap-6 tw-grid-cols-1 sm:tw-grid-cols-2 lg:tw-grid-cols-3 xl:tw-grid-cols-5">
+
+                    <div class="reveal-hero-text skill-card tw-p-4 tw-rounded-lg tw-shadow-md hover:tw-shadow-xl tw-transition-all tw-duration-300 tw-cursor-pointer modal-open-btn">    
+                        <div class="tw-flex tw-items-center tw-gap-3">
+                            <i class="bi bi-code-slash tw-text-2xl"></i>
+                            <h3 class="tw-text-lg tw-font-semibold">Programming Languages</h3>
+                        </div>    
+                        <div class="skill-buttons">
+                            <button>Python</button>
+                            <button>JavaScript</button>
+                            <button>Java</button>
+                            <button>Ruby</button>
+                            <button>HTML</button>
+                            <button>CSS</button>
+                            <button>Bash</button>
+                        </div>    
+                    </div>
+
+                    <div class="reveal-hero-text skill-card tw-bg-white tw-p-4 tw-rounded-lg tw-shadow-md hover:tw-shadow-xl tw-transition-all tw-duration-300 tw-cursor-pointer modal-open-btn">
+                        <div class="tw-flex tw-items-center tw-gap-3">
+                            <i class="bi bi-cpu-fill tw-text-2xl"></i>
+                            <h3 class="tw-text-lg tw-font-semibold">AI & ML</h3>
+                        </div>
+                        <div class="skill-buttons">
+                            <button>Pytorch</button>
+                            <button>Pandas</button>
+                            <button>Tensorflow</button>
+                            <button>Scikit-learn</button>
+                            <button>Numpy</button>
+                            <button>Matplotlib</button>
+                        </div>   
+                    </div>
+
+                    <div class="reveal-hero-text skill-card tw-bg-white tw-p-4 tw-rounded-lg tw-shadow-md hover:tw-shadow-xl tw-transition-all tw-duration-300 tw-cursor-pointer modal-open-btn">
+                        <div class="tw-flex tw-items-center tw-gap-3">
+                            <i class="bi bi-database-fill tw-text-2xl"></i>
+                            <h3 class="tw-text-lg tw-font-semibold">Databases</h3>
+                        </div>
+                        <div class="skill-buttons">
+                            <button>SQL</button>
+                            <button>MySQL</button>
+                            <button>PostgreSQL</button>
+                            <button>MongoDB</button>
+                        </div>   
+                    </div>
+
+                    <div class="reveal-hero-text skill-card tw-bg-white tw-p-4 tw-rounded-lg tw-shadow-md hover:tw-shadow-xl tw-transition-all tw-duration-300 tw-cursor-pointer modal-open-btn">
+                        <div class="tw-flex tw-items-center tw-gap-3">
+                            <i class="bi bi-bug-fill tw-text-2xl"></i>
+                            <h3 class="tw-text-lg tw-font-semibold">Testing</h3>
+                        </div>
+                        <div class="skill-buttons">
+                            <button>Selenium</button>
+                            <button>TestNG</button>
+                            <button>JUnit</button>
+                            <button>Cucumber</button>
+                            <button>REST API</button>
+                            <button>SOAP UI</button>
+                            <button>Postman</button>
+                            <button>Pytest</button>
+                        </div>   
+                    </div>
+
+                    <div class="reveal-hero-text skill-card tw-bg-white tw-p-4 tw-rounded-lg tw-shadow-md hover:tw-shadow-xl tw-transition-all tw-duration-300 tw-cursor-pointer modal-open-btn">
+                        <div class="tw-flex tw-items-center tw-gap-3">
+                            <i class="bi bi-cloud-arrow-up-fill tw-text-2xl"></i>
+                            <h3 class="tw-text-lg tw-font-semibold">Cloud & DevOps</h3>
+                        </div>
+                        <div class="skill-buttons">
+                            <button>GCP</button>
+                            <button>Docker</button>
+                            <button>Kubernetes</button>
+                            <button>CI/CD</button>
+                        </div>   
+                    </div>
+                </div> 
+            </div>
+        </section>
+
+        <!-- ==================== WORK EXPERIENCE SECTION ==================== -->
+        <section class="tw-relative tw-flex tw-min-h-[100vh] tw-w-full tw-max-w-fit tw-flex-col tw-place-content-center tw-place-items-center lg:tw-p-6">
+            <div class="tw-flex tw-h-full tw-w-full tw-justify-around tw-gap-8 tw-rounded-xl tw-bg-white tw-p-4 max-lg:tw-max-w-full max-lg:tw-flex-col">
+                <div class="reveal-up tw-flex tw-h-full tw-w-[50%] tw-place-content-center max-lg:tw-w-full lg:tw-sticky lg:tw-top-[20%]">
+                    <h1 class="tw-text-center tw-text-4xl tw-font-small max-lg:tw-text-3xl">
+                        Work Experience
+                    </h1>
+                </div>               
+
+                <div class="reveal-up tw-flex tw-w-[60%] tw-flex-col tw-place-items-center tw-gap-4 tw-p-2 max-lg:tw-w-full">           
+                    <div class="tw-flex tw-h-fit tw-w-full tw-flex-col tw-gap-4 tw-border-2 tw-bg-white tw-p-4">
+                        <div class="tw-flex tw-w-full tw-place-items-center tw-gap-4 tw-p-2">
+                            <div class="tw-flex tw-h-[60px] tw-w-[60px] tw-overflow-hidden tw-rounded-full">
+                                <img
+                                    src="./assets/images/ncsu.png"
+                                    alt="NCSU"
+                                    class="tw-h-full tw-w-full tw-object-cover"
+                                />
+                            </div>
+                            <div>
+                                <p class="tw-text-xl tw-font-semibold">Research Assistant | North Carolina State University</p>
+                                <p class="tw-text-medium tw-italic tw-text-gray-600">July 2025 - Present</p>
+                            </div>
+                        </div>
+                        <div class="tw-text-sm">
+                            Developed an LLM-powered framework to improve fuzz testing 
+                            in deep learning libraries by dynamically identifying error patterns. 
+                            Analyzed over 95 bugs across various tools, achieving over 90% success 
+                            in automated bug reproduction and ensuring scalability.
+                        </div>  
+                    </div>
+
+                    <div class="tw-flex tw-h-fit tw-w-full tw-flex-col tw-gap-4 tw-border-2 tw-bg-white tw-p-4">
+                        <div class="tw-flex tw-w-full tw-place-items-center tw-gap-4 tw-p-2">
+                            <div class="tw-flex tw-h-[60px] tw-w-[60px] tw-overflow-hidden tw-rounded-full">
+                                <img
+                                    src="./assets/images/ncsu.png"
+                                    alt="NCSU"
+                                    class="tw-h-full tw-w-full tw-object-cover"
+                                />
+                            </div>
+
+                            <div>
+                                <p class="tw-text-xl tw-font-semibold">Teaching Assistant | North Carolina State University</p>
+                                <p class="tw-text-medium tw-italic tw-text-gray-600">January 2025 - April 2025</p>
+                            </div>
+                        </div>
+                        <div class="tw-text-sm">
+                            Combined data-driven innovation with mentorship by developing a 95%-accurate 
+                            Python defect prediction model and optimizing git workflows. 
+                            Empowered students to improve performance by 20% through personalized guidance and practical feedback.
+                        </div>
+                    </div>
+
+                    <div class="tw-flex tw-h-fit tw-w-full tw-flex-col tw-gap-4 tw-border-2 tw-bg-white tw-p-4">
+                        <div class="tw-flex tw-w-full tw-place-items-center tw-gap-4 tw-p-2">
+                            <div class="tw-flex tw-h-[60px] tw-w-[60px] tw-overflow-hidden tw-rounded-full">
+                                <img
+                                    src="./assets/images/ncsu.png"
+                                    alt="NCSU"
+                                    class="tw-h-full tw-w-full tw-object-cover"
+                                />
+                            </div>
+
+                            <div>
+                                <p class="tw-text-xl tw-font-semibold">Research Assistant | North Carolina State University</p>
+                                <p class="tw-text-medium tw-italic tw-text-gray-600">April 2024 - August 2024</p>
+                            </div>
+                        </div>
+                        <div class="tw-text-sm">
+                            Collaborated with qBraid to develop quantum algorithms in Python and Qiskit for early Alzheimer’s detection, 
+                            targeting a 30% reduction in dementia care costs. Optimized quantum circuits for greater reliability 
+                            and leveraged HPC systems, cutting computation time by two days.
+                        </div>
+                    </div>
+
+                    <div class="tw-flex tw-h-fit tw-w-full tw-flex-col tw-gap-4 tw-border-2 tw-bg-white tw-p-4">
+                        <div class="tw-flex tw-w-full tw-place-items-center tw-gap-4 tw-p-2">
+                            <div class="tw-flex tw-h-[60px] tw-w-[60px] tw-overflow-hidden tw-rounded-full">
+                                <img
+                                    src="./assets/images/cognizant.png"
+                                    alt="cognizant"
+                                    class="tw-h-full tw-w-full tw-object-cover"
+                                />
+                            </div>
+
+                            <div>
+                                <p class="tw-text-xl tw-font-semibold">Programmer Analyst | Cognizant</p>
+                                <p class="tw-text-medium tw-italic tw-text-gray-600">June 2022 - June 2023</p>
+                            </div>
+                        </div>
+                        <div class="tw-text-sm">
+                            Performed UI automation testing with Java-Selenium and TestNG, 
+                            uncovering 200+ bugs and reducing post-release issues by 80%. 
+                            Enhanced backend reliability through SQL and API testing, 
+                            collaborated with Agile teams to accelerate defect resolution, 
+                            and maintained comprehensive test documentation.
+                        </div>
+                    </div>
+                    <div class="tw-flex tw-h-fit tw-w-full tw-flex-col tw-gap-4 tw-border-2 tw-bg-white tw-p-4">
+                        <div class="tw-flex tw-w-full tw-place-items-center tw-gap-4 tw-p-2">
+                            <div class="tw-flex tw-h-[60px] tw-w-[60px] tw-overflow-hidden tw-rounded-full">
+                                <img
+                                    src="./assets/images/cognizant.png"
+                                    alt="cognizant"
+                                    class="tw-h-full tw-w-full tw-object-cover"
+                                />
+                            </div>
+
+                            <div>
+                                <p class="tw-text-xl tw-font-semibold">Quality Assurance Engineer Intern | Cognizant</p>
+                                <p class="tw-text-medium tw-italic tw-text-gray-600">January 2022 - May 2022</p>
+                            </div>
+                        </div>
+                        <div class="tw-text-sm">
+                            Automated testing for web applications such as Trutime and Udemy using Selenium, 
+                            increasing testing speed by 80% and improving overall software reliability.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== EDUCATION SECTION ==================== -->
+        <section class="tw-relative tw-mt-10 tw-flex tw-flex-col tw-items-center tw-w-full lg:tw-p-6">
+            <div class="tw-w-full tw-max-w-5xl tw-p-6">
+                <div class="tw-text-center tw-mb-10">
+                <h2 class="tw-text-4xl tw-font-semibold">Education</h2>
+                </div>
+                <!-- Timeline container -->
+                <div class="timeline tw-relative tw-flex tw-flex-col tw-items-center tw-w-full">
+                    <!-- NCSU (Right Side) -->
+                    <div class="timeline-item right tw-w-full tw-flex tw-justify-center tw-relative tw-mt-10">
+                        <div class="tw-w-1/2 tw-text-left">
+                        <h3 class="tw-text-xl tw-font-semibold">North Carolina State University</h3>
+                        <p class="tw-text-gray-700">Master of Science</p>
+                        <p class="tw-text-gray-700">Computer Science</p>
+                        <p class="tw-text-gray-500 tw-text-sm">August 2023 – May 2025</p>
+                        </div>
+
+                        <div class="timeline-icon tw-flex tw-items-center tw-justify-center tw-bg-white tw-rounded-full tw-z-10">
+                        <i class="bi bi-mortarboard-fill tw-text-3xl tw-text-blue-600"></i>
+                        </div>
+
+                        <div class="tw-w-1/2"></div>
+                    </div>
+
+                    <!-- CBIT (Left Side) -->
+                    <div class="timeline-item left tw-w-full tw-flex tw-justify-center tw-relative tw-mt-6">
+                        <div class="tw-w-1/2 tw-text-right">
+                        <h3 class="tw-text-xl tw-font-semibold">Chaitanya Bharathi Institute of Technology</h3>
+                        <p class="tw-text-gray-700">Bachelor of Engineering</p>
+                        <p class="tw-text-gray-700">Electrical and Electronics Engineering</p>
+                        <p class="tw-text-gray-500 tw-text-sm">June 2018 – June 2022</p>
+                        </div>
+
+                        <div class="timeline-icon tw-flex tw-items-center tw-justify-center tw-bg-white tw-rounded-full tw-z-10">
+                        <i class="bi bi-mortarboard-fill tw-text-3xl tw-text-blue-600"></i>
+                        </div>
+
+                        <div class="tw-w-1/2"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== PROJECTS SECTION ==================== -->
+        <section class="projects-section" id="projects">
+            <div class="projects-header">
+                <h2>View my Projects</h2>
+            </div>
+
+            <div class="projects-container">
+                <!-- Project 1 -->
+                <div class="project-card" onclick="openModal('ellipsis')">
+                <div class="project-image">
+                    <img src="./assets/images/ellipsis.png" alt="Ellipsis" />
+                </div>
+                <h3>Ellipsis</h3>
+                <p>
+                    Fully automated, AI-driven agent capable of
+                    producing human-like, high-quality podcasts.
+                </p>
+                <span class="learn-more">Learn more →</span>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card" onclick="openModal('article2')">
+                <div class="project-image">
+                    <img src="./assets/images/tumor.png" alt="Article 2" />
+                </div>
+                <h3>Brain Tumor Detection</h3>
+                <p>
+                    CNN-based classifier that classifies MRI scans into glioma, meningioma,
+                    pituitary, or no tumor. 
+                </p>
+                <span class="learn-more">Learn more →</span>
+                </div>
+
+                <!-- Project 3: 86-No-More -->
+                <div class="project-card" onclick="openModal('article3')">
+                    <div class="project-image">
+                        <img src="./assets/images/banner.gif" alt="86-No-More" />
+                    </div>
+                    <h3>86-No-More</h3>
+                    <p>
+                        Inventory management system that predicts ingredient
+                        shortages, sends alerts, and enhances sustainability.
+                    </p>
+                    <span class="learn-more">Learn more →</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== MODALS ==================== -->
+
+        <!-- Modal: Ellipsis -->
+        <div id="ellipsis-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('ellipsis')">&times;</span>
+                <h3>Ellipsis</h3>
+                <p>
+                Ellipsis is an <strong>AI-powered podcast generation agent</strong> that produces 
+                fully automated, high-quality audio episodes featuring realistic 
+                multi-speaker conversations on virtually any topic.
+                </p>
+                <p>
+                Users simply enter a topic, and Ellipsis takes care of the entire 
+                production pipeline—conducting research, generating a dynamic script, 
+                narrating it with distinct voices, and producing polished audio output.
+                </p>
+                <p>
+                What sets Ellipsis apart is its rigorous evaluation system. Before finalizing an episode, 
+                the script goes through three rounds of review by a panel of five specialized AI agents:
+                </p>
+                <ul>
+                <li>The <strong>Scientist</strong> – checks for factual accuracy and scientific coherence</li>
+                <li>The <strong>Author</strong> – assesses narrative flow and language quality</li>
+                <li>The <strong>Critic</strong> – evaluates storytelling and engagement</li>
+                <li>The <strong>Psychologist</strong> – flags potential ethical or psychological concerns</li>
+                <li>The <strong>General Public</strong> – judges relatability and clarity for a broad audience</li>
+                </ul>
+                <p>
+                After passing this multi-agent review, the content is converted into natural-sounding 
+                multi-speaker audio and even generates the script.
+                </p>
+                <h4>Technologies Used:</h4>
+                <div class="skill-buttons">
+                <button>Python</button>
+                <button>Flask</button>
+                <button>React</button>
+                <button>Redis</button>
+                <button>Orpheus TTS</button>
+                <button>MCP</button>
+                </div>
+                <div class="modal-buttons">
+                    <a href="https://github.com/dineshkannan010/Ellipsis.git" target="_blank" class="btn">View on GitHub</a>
+                    <a href="https://youtu.be/zPsfbduVc-E" target="_blank" class="btn"> View on YouTube</a>
+                </div>
+            </div>
+        </div> 
+
+        <!-- Modal: Brain Tumor Detection -->
+        <div id="article2-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('article2')">&times;</span>
+
+                <h3>Brain Tumor Detection using CNN</h3>
+
+                <p>
+                A Convolutional Neural Network that classifies MRI brain scans into four
+                classes: <strong>glioma, meningioma, pituitary</strong>, and <strong>no tumor</strong>.
+                The project uses Kaggle's Brain Tumor MRI dataset and includes careful
+                preprocessing, augmentation, and model evaluation.
+                </p>
+
+                <h4>Key details</h4>
+                <ul>
+                <li><strong>Dataset:</strong> 7,023 images (train: 5,712; test: 1,311); classes ~300 each, "no tumor" ~400 in test.</li>
+                <li><strong>Preprocessing:</strong> convert to grayscale, resize to 224×224, normalize pixels (0–1).</li>
+                <li><strong>Augmentation:</strong> rotation ±10°, width/height shift 10%, shear, horizontal flip, brightness 80–120%.</li>
+                <li><strong>Model:</strong> CNN with Conv + BatchNorm + Pooling, Dropout, fully-connected layers and softmax output. Optimizer: Adam (lr=0.001). EarlyStopping & ReduceLROnPlateau used.</li>
+                <li><strong>Training & Eval:</strong> categorical cross-entropy; high accuracy reported, with near-perfect scores for some classes and slight confusion for meningioma.</li>
+                </ul>
+
+                <h4>Technologies / Skills</h4>
+                <div class="skill-buttons">
+                <button>Python</button>
+                <button>TensorFlow / Keras</button>
+                <button>OpenCV</button>
+                <button>NumPy / Pandas</button>
+                <button>Data Augmentation</button>
+                <button>Model Evaluation</button>
+                </div>
+
+                <div class="modal-buttons">
+                <a href="https://docs.google.com/presentation/d/10TTHg4EK-uxvScwhsJi6tU1OHZgUpwUtOeGakXCJKqQ/edit?usp=sharing" target="_blank" class="btn report-btn">
+                    <i class="fa-regular fa-file-pdf"></i> View Presentation
+                </a>
+
+                <a href="https://youtu.be/qtcKvuGmO9c?si=mmre9PpcHtvl0yw_" target="_blank" class="btn youtube-btn">
+                    <i class="fa-brands fa-youtube"></i> View on YouTube
+                </a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Modal: 86-No-More -->
+        <div id="article3-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('article3')">&times;</span>
+                <h3>86-No-More: Where Innovation Meets Indulgence!</h3>
+                <p>
+                <strong>86-No-More</strong> is a revolutionary restaurant management app
+                that eliminates the frustration of unavailable menu items through a
+                cutting-edge <strong>AI-driven inventory tracker</strong>. It predicts
+                ingredient shortages, sends real-time alerts, and provides insightful
+                analytics to reduce waste and maximize profit.
+                </p>
+
+                <h4>✨ Key Features</h4>
+                <ul>
+                <li>Register and log in with secure authentication.</li>
+                <li>Add, update, and delete items in menu and inventory.</li>
+                <li>Supports metric selection for quantity tracking.</li>
+                <li>Ordering and payment page for customers.</li>
+                <li>Email notifications for shortages and expirations.</li>
+                <li>Predicts future stock needs based on past data.</li>
+                <li>Interactive analytics and visual inventory graphs.</li>
+                <li>User feedback page with star ratings.</li>
+                <li>Awareness tab promoting food-waste reduction.</li>
+                <li>Code formatted using Prettier; includes unit tests for coverage.</li>
+                </ul>
+
+                <h4>Technologies Used</h4>
+                <div class="skill-buttons">
+                <button>React</button>
+                <button>Redux</button>
+                <button>Node.js</button>
+                <button>Express.js</button>
+                <button>MongoDB</button>
+                <button>REST API</button>
+                <button>Jest</button>
+                </div>
+
+                <div class="modal-buttons">
+                <a
+                    href="https://github.com/nitin-dhevar/86-no-more-frontend"
+                    target="_blank"
+                    class="btn github-btn"
+                >
+                    <i class="fa-brands fa-github"></i> Frontend Code
+                </a>
+
+                <a
+                    href="https://github.com/nitin-dhevar/86-no-more-backend"
+                    target="_blank"
+                    class="btn github-btn"
+                >
+                    <i class="fa-brands fa-github"></i> Backend Code
+                </a>
+                </div>
+            </div>
+            </div>
+
+
+        <!-- ==================== TESTIMONIAL SECTION ==================== -->
+        <section class="testimonial-section">
+            <h3 class="tw-text-4xl tw-font-semibold">What people say about me ✨</h3>
+            <div class="carousel">
+                <div class="slide active">
+                    <p>"Manideepika is one of the most dependable student employees I have ever worked with. 
+                        She takes the responsibility of her role seriously and performs exceptionally well. 
+                        She is a joy to work with and always has a smile on her face!"</p>
+                    <h4>— Jacob Libera</h4>
+                </div>
+            </div>
+            <div class="carousel">
+                <div class="slide active">
+                    <p>"Manideepika is one of the most dependable student employees I have ever worked with. 
+                        She takes the responsibility of her role seriously and performs exceptionally well. 
+                        She is a joy to work with and always has a smile on her face!"</p>
+                    <h4>—  Libera</h4>
+                </div>
+            </div>
+            <div class="carousel">
+                <div class="slide active">
+                    <p>"Manideepika is one of the most dependable student employees I have ever worked with. 
+                        She takes the responsibility of her role seriously and performs exceptionally well. 
+                        She is a joy to work with and always has a smile on her face!"</p>
+                    <h4>— Jacob </h4>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== CERTIFICATIONS SECTION ==================== -->
+        <section class="tw-relative tw-flex tw-min-h-[80vh] tw-w-full tw-max-w-[100vw] tw-flex-col tw-place-content-center tw-place-items-center tw-overflow-hidden tw-p-2" id="">
+            <div class=" tw-flex tw-flex-col tw-place-items-center tw-gap-5">
+                <div class="reveal-up tw-mt-5 tw-flex tw-flex-col tw-gap-3 tw-text-center">
+                    <h2 class="tw-text-4xl tw-font-semibold">
+                        Certifications & Achievements
+                    </h2>
+                </div>
+                <div class="tw-mt-6 tw-flex tw-max-w-[60%] tw-flex-wrap tw-place-content-center tw-gap-2 max-lg:tw-flex-col">
+                    <div class="reveal-up tw-flex tw-h-[150px] tw-w-[350px] tw-flex-col tw-gap-2 tw-p-4">
+                        <div class="tw-flex tw-items-center tw-gap-2">
+                            <img src="./assets/images/git.png"
+                            alt="GitHub"
+                            class="tw-rounded-full tw-object-cover"
+                            style="width: 50px; height: 50px;" />
+                            <h3 class="tw-text-lg tw-font-semibold">
+                                BugsinDLLS - Open Source contribution
+                            </h3>
+                        </div>
+                        <div class="tw-text-[#595959] tw-text-sm tw-leading-snug">
+                            <p>Pytorch, Tensorflow, Docker, Conda, Python, Pytest</p>
+                        </div>
+                    </div>
+                    
+                    <div class="reveal-up tw-flex tw-h-[150px] tw-w-[350px] tw-flex-col tw-gap-2 tw-p-4">
+                        <div class="tw-flex tw-items-center tw-gap-2">
+                            <img src="./assets/images/nvidia.png"
+                            alt="NVIDIA"
+                            class="tw-rounded-full tw-object-cover"
+                            style="width: 40px; height: 40px;" />
+                            <h3 class="tw-text-lg tw-font-semibold">
+                                Getting Started with Deep Learning
+                            </h3>
+                        </div>
+                        <div class="tw-text-[#595959] tw-text-sm tw-leading-snug">
+                            <p>CNN, Data Augmentation, Transfer Learning, NLP, Model Deployment</p>
+                        </div>
+                    </div>
+
+                    <div class="reveal-up tw-flex tw-h-[150px] tw-w-[350px] tw-flex-col tw-gap-2 tw-p-4">
+                        <div class="tw-flex tw-items-center tw-gap-2">
+                            <img src="./assets/images/ts.png"
+                            alt="NVIDIA"
+                            class="tw-rounded-full tw-object-cover"
+                            style="width: 40px; height: 40px;" />
+                            <h3 class="tw-text-lg tw-font-semibold">
+                                Mahatma Jyothiba Phule Overseas Vidya Nidhi
+                            </h3>
+                        </div>
+                        <div class="tw-text-[#595959] tw-text-sm tw-leading-snug">
+                            <p>Awarded by the <strong>Government of Telangana</strong> for postgraduate studies</p>
+                        </div>
+                    </div>
+
+                    <div class="reveal-up tw-flex tw-h-[150px] tw-w-[350px] tw-flex-col tw-gap-2 tw-p-4">
+                        <div class="tw-flex tw-items-center tw-gap-2">
+                            <img src="./assets/images/ts.png"
+                            alt="NVIDIA"
+                            class="tw-rounded-full tw-object-cover"
+                            style="width: 40px; height: 40px;" />
+                            <h3 class="tw-text-lg tw-font-semibold">
+                                Post - Matric Scholarship
+                            </h3>
+                        </div>
+                        <div class="tw-text-[#595959] tw-text-sm tw-leading-snug">
+                            <p>Awarded by the <strong>Government of Telangana</strong> for undergraduate studies</p>
+                        </div>
+                    </div>
+
+                    <div class="reveal-up tw-flex tw-h-[150px] tw-w-[350px] tw-flex-col tw-gap-2 tw-p-4">
+                        <div class="tw-flex tw-items-center tw-gap-2">
+                            <img src="./assets/images/ibm.png"
+                            alt="GitHub"
+                            class="tw-rounded-full tw-object-cover"
+                            style="width: 50px; height: 50px;" />
+                            <h3 class="tw-text-lg tw-font-semibold">
+                                Qiskit Global Summer School 2024
+                            </h3>
+                        </div>
+                        <div class="tw-text-[#595959] tw-text-sm tw-leading-snug">
+                            <p>Python, Qiskit, Quantum Simulation, Quantum omputing</p>
+                        </div>
+                    </div>
+        </section>
+
+        <!-- ==================== MARQUEE SECTION ==================== -->
+        <section class="w-full py-16 bg-white">
+            <h2 class="text-center text-2xl font-bold mb-8">Little bit about me!</h2>
+
+            <div class="marquee-wrapper">
+                <div class="marquee-track">
+                <!-- First set -->
+                <div class="marquee-card">
+                    <img src="./assets/images/p1.jpg" alt="SAS Logo" />
+                </div>
+                <div class="marquee-card">
+                    <img src="./assets/images/p2.jpg" alt="Simplified Logo" />
+                </div>
+                <div class="marquee-card">
+                    <img src="./assets/images/p3.jpg" alt="Toshiba Logo" />
+                </div>
+                <div class="marquee-card">
+                    <img src="./assets/images/p4.jpg" alt="VibeSea Logo" />
+                </div>
+                <div class="marquee-card">
+                    <img src="./assets/images/p5.jpg" alt="Hints Logo" />
+                </div>
+                <div class="marquee-card">
+                    <img src="./assets/images/p7.jpg" alt="Simplified Logo" />
+                </div>
+                <div class="marquee-card">
+                    <img src="./assets/images/p9.jpg" alt="VibeSea Logo" />
+                </div>
+                <div class="marquee-card">
+                    <img src="./assets/images/p11.jpg" alt="Hints Logo" />
+                </div>
+
+                <!-- Duplicate set for infinite loop -->
+                <div class="marquee-card">
+                    <img src="./assets/images/p1.jpg" alt="" />
+                </div>
+                <div class="marquee-card">
+                    <img src="./assets/images/p2.jpg" alt="" />
+                </div>
+                <div class="marquee-card">
+                    <img src="./assets/images/p3.jpg" alt="" />
+                </div>
+                <div class="marquee-card">
+                    <img src="./assets/images/p4.jpg" alt="" />
+                </div>
+                <div class="marquee-card">
+                    <img src="./assets/images/p5.jpg" alt="" />
+                </div>
+                <div class="marquee-card">
+                    <img src="./assets/images/p7.jpg" alt="" />
+                </div>
+                <div class="marquee-card">
+                    <img src="./assets/images/p9.jpg" alt="" />
+                </div>
+                <div class="marquee-card">
+                    <img src="./assets/images/p11.jpg" alt="" />
+                </div>
+            </div>  
+        </section>
+
+        <hr class="tw-mt-4" />
+
+        <footer
+            class="tw-mt-auto tw-flex tw-min-h-[100px] tw-w-full tw-place-content-around tw-place-items-center tw-gap-3 tw-p-[2%] tw-px-[10%] tw-text-black max-md:tw-flex-col"
+        >
+            <div class="tw-flex tw-gap-6 tw-text-2xl">
+                <a href="" aria-label="Github">
+                    <i class="bi bi-github"></i>
+                </a>
+                <a
+                    href="https://twitter.com/@pauls_freeman"
+                    aria-label="Twitter"
+                >
+                    <i class="bi bi-twitter"></i>
+                </a>
+                <a
+                    href="https://stackoverflow.com/"
+                    class="tw-h-[40px] tw-w-[40px]"
+                    aria-label="stackoverflow"
+                >
+                    <i class="bi bi-stack-overflow"></i>
+                </a>
+            </div>
+        </footer>
+    </body>
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"
+        integrity="sha512-B1lby8cGcAUU3GR+Fd809/ZxgHbfwJMp0jLTVfHiArTuUt++VqSlJpaJvhNtRf3NERaxDNmmxkdx2o+aHd4bvw=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    ></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js"
+        integrity="sha512-AY2+JxnBETJ0wcXnLPCcZJIJx0eimyhz3OJ55k2Jx4RtYC+XdIi2VtJQ+tP3BaTst4otlGG1TtPJ9fKrAUnRdQ=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    ></script>
+
+    <script src="./index.js"></script>
+</html>
