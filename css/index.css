@@ -210,16 +210,18 @@ header > .collapsible-header{
     
 }
 .marquee-wrapper {
-  overflow: visible;
+  overflow: hidden;
   position: relative;
   width: 100%;
+  padding-top: 1rem; 
+  padding-bottom: 1rem;
 }
 
 .marquee-track {
   display: flex;
   gap: 2rem;
   animation: scroll 25s linear infinite;
-  will-change: transform;
+  width: max-content
 }
 
 .marquee-card {
@@ -273,11 +275,16 @@ header > .collapsible-header{
 .marquee-card:nth-child(even) {
   transform: rotate(3deg);
 }
+
+.marquee-wrapper:hover .marquee-track {
+  animation-play-state: paused;
+}
+
 .flex-container {
   display: flex;
-  justify-content: space-between; /* pushes them to opposite ends */
-  align-items: center;            /* keeps them vertically aligned */
-  width: 100%;                    /* makes sure it spans full width */
+  justify-content: space-between; 
+  align-items: center;            
+  width: 100%;                    
 }
 
 /* Ensure Bootstrap Icons are loaded */
