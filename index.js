@@ -179,26 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  let currentSlide = 0;
-  const slides = document.querySelectorAll('.slide');
-  const totalSlides = slides.length;
-  const carousel = document.querySelector('.carousel');
-  let interval = setInterval(showNextSlide, 5000);
-
-  function showNextSlide() {
-    slides[currentSlide].classList.remove('active');
-    currentSlide = (currentSlide + 1) % totalSlides;
-    slides[currentSlide].classList.add('active');
-  }
-
-  // Pause on hover
-  carousel.addEventListener('mouseenter', () => clearInterval(interval));
-  carousel.addEventListener('mouseleave', () => {
-    interval = setInterval(showNextSlide, 5000);
-  });
-});
-
 function openModal(projectId) {
   document.getElementById(`${projectId}-modal`).style.display = "flex";
 }
@@ -229,36 +209,64 @@ const items = document.querySelectorAll(".timeline-item");
 
   items.forEach((item) => observer.observe(item));
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const carousel = document.getElementById("testimonial-carousel");
-    const slides = carousel.querySelectorAll(".slide");
-    let currentIndex = 0;
-    let intervalId;
+// Testimonial section start
+  const carousel = document.getElementById('testimonial-carousel');
+  const slides = carousel.querySelectorAll('.slide');
+  const dotsContainer = document.getElementById('testimonial-dots');
 
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle("active", i === index);
-      });
-    }
+  let current = 0;
+  let autoSlideInterval;
 
-    function nextSlide() {
-      currentIndex = (currentIndex + 1) % slides.length;
-      showSlide(currentIndex);
-    }
-
-    // Auto-rotate every 5 seconds
-    function startAutoRotate() {
-      intervalId = setInterval(nextSlide, 5000);
-    }
-
-    function stopAutoRotate() {
-      clearInterval(intervalId);
-    }
-
-    // Start rotation
-    startAutoRotate();
-
-    // Pause on hover
-    carousel.addEventListener("mouseenter", stopAutoRotate);
-    carousel.addEventListener("mouseleave", startAutoRotate);
+  // ✅ Create dots dynamically
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => goToSlide(i));
+    dotsContainer.appendChild(dot);
   });
+
+  const dots = dotsContainer.querySelectorAll('button');
+
+  // ✅ Core update function
+  function updateSlides() {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === current);
+      dots[i].classList.toggle('active', i === current);
+    });
+  }
+
+  // ✅ Go to specific slide
+  function goToSlide(index) {
+    current = index;
+    updateSlides();
+  }
+
+  // ✅ Next/Previous navigation
+  function nextSlide() {
+    current = (current + 1) % slides.length;
+    updateSlides();
+  }
+
+  function prevSlide() {
+    current = (current - 1 + slides.length) % slides.length;
+    updateSlides();
+  }
+
+  // ✅ Auto-slide logic
+  function startAutoSlide() {
+    autoSlideInterval = setInterval(() => {
+      nextSlide(); // this ensures dot updates *exactly* with each slide
+    }, 5000); // every 5 seconds
+  }
+
+  function stopAutoSlide() {
+    clearInterval(autoSlideInterval);
+  }
+
+  // Start auto-slide on load
+  startAutoSlide(nextSlide, 5000);
+
+  // ✅ Pause on hover
+  carousel.addEventListener('mouseenter', stopAutoSlide);
+  carousel.addEventListener('mouseleave', startAutoSlide);
+//Testimonial section end

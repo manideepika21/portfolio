@@ -422,28 +422,31 @@ header > .collapsible-header{
   font-size: 1.1rem;
 }
 
-/* --- ARROWS --- */
-button.prev,
-button.next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: transparent;
-  color: black;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-  opacity: 0;
-  transition: opacity 0.3s ease, transform 0.2s ease;
-  z-index: 10;
+/* --- DOTS (Pagination) --- */
+.dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+  gap: 0.6rem;
 }
 
-button.prev { left: 10px; }
-button.next { right: 10px; }
+.dots button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background-color: #ccc;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
 
-.carousel:hover button.prev,
-.carousel:hover button.next {
-  opacity: 1;
+.dots button.active {
+  background-color: #000; /* black active dot */
+  transform: scale(1.1);
+}
+
+.dots button:hover {
+  background-color: #555; /* optional hover feedback */
 }
 
 /* ---Education Timeline Section --- */
