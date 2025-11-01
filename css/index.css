@@ -486,20 +486,30 @@ button.next { right: 10px; }
   display: flex;
   align-items: center;
   justify-content: center;
+  top: 0; 
+  height: 0; 
 }
 
 /* LEFT SIDE ITEM */
 .timeline-item.left > .tw-text-right {
   width: 45%;
   text-align: right;
-  margin-right: 6rem; /* <-- pushes text away from the line */
+  margin-right: 6rem; 
 }
 
 /* RIGHT SIDE ITEM */
 .timeline-item.right > .tw-text-left {
   width: 45%;
   text-align: left;
-  margin-left: 40rem; /* <-- pushes text away from the line */
+  margin-left: 40rem; 
+}
+
+.timeline-item.right .timeline-icon {
+  top: 1.2rem; 
+}
+
+.timeline-item.left .timeline-icon {
+  top: 1.2rem; 
 }
 
 /* Responsive stacking */
