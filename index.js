@@ -270,3 +270,51 @@ const items = document.querySelectorAll(".timeline-item");
   carousel.addEventListener('mouseenter', stopAutoSlide);
   carousel.addEventListener('mouseleave', startAutoSlide);
 //Testimonial section end
+
+// Section Navigation Script
+  document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section[id]');
+            
+    // Function to update active nav link
+    function updateActiveNav() {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+      if (window.pageYOffset >= sectionTop - 200) {
+        current = section.getAttribute('id');
+      }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-section') === current) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            // Smooth scrolling for nav links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('data-section');
+                    const targetSection = document.getElementById(targetId);
+                    
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Update active nav on scroll
+            window.addEventListener('scroll', updateActiveNav);
+            
+            // Set initial active state
+            updateActiveNav();
+        });
+// Section Navigation ends</script>

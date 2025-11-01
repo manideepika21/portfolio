@@ -85,6 +85,7 @@
                                 <i class="bi bi-arrow-up-right"></i>
                             </div>
                         </a>
+                        
                         <!-- Social Icons -->
                         <div class="tw-flex tw-gap-8 tw-items-center">
                             <!-- LinkedIn -->
@@ -105,6 +106,16 @@
                                 class="tw-flex tw-h-[78px] tw-w-[78px] tw-items-center tw-justify-center tw-rounded-full tw-border tw-border-black tw-bg-white tw-text-black"
                             >
                                 <i class="bi bi-github tw-text-4xl"></i>
+                            </a>
+
+                            <!-- Email -->
+                            <a
+                                href="https://mail.google.com/mail/?view=cm&fs=1&to=mmyaka@ncsu.edu"
+                                target="_blank"
+                                aria-label="Email"
+                                class="tw-flex tw-h-[78px] tw-w-[78px] tw-items-center tw-justify-center tw-rounded-full tw-border tw-border-black tw-bg-white tw-text-black"
+                            >
+                                <i class="bi bi-envelope tw-text-4xl"></i>
                             </a>
                         </div>
                     </div>
@@ -750,54 +761,5 @@
     ></script>
 
     <script src="./index.js"></script>
-    
-    <!-- Section Navigation Script -->
-    <script>
-        // Section Navigation Functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('.nav-link');
-            const sections = document.querySelectorAll('section[id]');
-            
-            // Function to update active nav link
-            function updateActiveNav() {
-                let current = '';
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    if (window.pageYOffset >= sectionTop - 200) {
-                        current = section.getAttribute('id');
-                    }
-                });
-                
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('data-section') === current) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-            
-            // Smooth scrolling for nav links
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('data-section');
-                    const targetSection = document.getElementById(targetId);
-                    
-                    if (targetSection) {
-                        targetSection.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-            
-            // Update active nav on scroll
-            window.addEventListener('scroll', updateActiveNav);
-            
-            // Set initial active state
-            updateActiveNav();
-        });
-    </script>
+
 </html>
