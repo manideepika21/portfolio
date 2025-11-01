@@ -228,3 +228,37 @@ const items = document.querySelectorAll(".timeline-item");
   }, { threshold: 0.2 });
 
   items.forEach((item) => observer.observe(item));
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const carousel = document.getElementById("testimonial-carousel");
+    const slides = carousel.querySelectorAll(".slide");
+    let currentIndex = 0;
+    let intervalId;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+      });
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    }
+
+    // Auto-rotate every 5 seconds
+    function startAutoRotate() {
+      intervalId = setInterval(nextSlide, 5000);
+    }
+
+    function stopAutoRotate() {
+      clearInterval(intervalId);
+    }
+
+    // Start rotation
+    startAutoRotate();
+
+    // Pause on hover
+    carousel.addEventListener("mouseenter", stopAutoRotate);
+    carousel.addEventListener("mouseleave", startAutoRotate);
+  });
