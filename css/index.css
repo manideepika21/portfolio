@@ -543,6 +543,7 @@ html {
   flex-direction: row;
   align-items: center;
   max-width: 1200px;
+  justify-content: space-between;
   margin: 0 auto;
   position: relative;
 }
@@ -592,13 +593,13 @@ html {
   font-weight: 600;
 }
 
-section:not(#about) {
-  scroll-margin-top: 80px; 
+.nav-icons-right {
+    display: flex;
+    gap: 1rem;
 }
 
-#about .anchor-offset {
-  height: 80px;   /* equal to scroll-padding-top */
-  margin-top: -80px; /* pulls the section up */
+html {
+  scroll-padding-top: 80px;
 }
 
 /* Reset only external section spacing */
@@ -615,11 +616,4 @@ section + section {
 
 section:first-of-type {
   margin-top: 0;  
-}
-
-/* Footer spacing */
-footer {
-  margin-top: 4rem;  
-  padding-top: 2rem;
-  padding-bottom: 2rem;
 }
