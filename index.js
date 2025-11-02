@@ -1,60 +1,4 @@
-// initialization
-
-const RESPONSIVE_WIDTH = 1024
-
-let headerWhiteBg = false
-let isHeaderCollapsed = window.innerWidth < RESPONSIVE_WIDTH
-const collapseBtn = document.getElementById("collapse-btn")
-const collapseHeaderItems = document.getElementById("collapsed-header-items")
-
-
-
-function onHeaderClickOutside(e) {
-
-    if (!collapseHeaderItems.contains(e.target)) {
-        toggleHeader()
-    }
-
-}
-
-
-function toggleHeader() {
-    if (isHeaderCollapsed) {
-        // collapseHeaderItems.classList.remove("max-md:tw-opacity-0")
-        collapseHeaderItems.classList.add("opacity-100",)
-        collapseHeaderItems.style.width = "60vw"
-        collapseBtn.classList.remove("bi-list")
-        collapseBtn.classList.add("bi-x", "max-lg:tw-fixed")
-        isHeaderCollapsed = false
-
-        setTimeout(() => window.addEventListener("click", onHeaderClickOutside), 1)
-
-    } else {
-        collapseHeaderItems.classList.remove("opacity-100")
-        collapseHeaderItems.style.width = "0vw"
-        collapseBtn.classList.remove("bi-x", "max-lg:tw-fixed")
-        collapseBtn.classList.add("bi-list")
-        isHeaderCollapsed = true
-        window.removeEventListener("click", onHeaderClickOutside)
-
-    }
-}
-
-function responsive() {
-    if (window.innerWidth > RESPONSIVE_WIDTH) {
-        collapseHeaderItems.style.width = ""
-
-    } else {
-        isHeaderCollapsed = true
-    }
-}
-
-window.addEventListener("resize", responsive)
-
-
-/**
- * Animations
- */
+/*** Animations*/
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -68,12 +12,10 @@ gsap.to(".reveal-hero-img", {
     y: "100%",
 })
 
-
 gsap.to(".reveal-up", {
     opacity: 0,
     y: "100%",
 })
-
 
 window.addEventListener("load", () => {
     // animate from initial position
@@ -90,10 +32,8 @@ window.addEventListener("load", () => {
         opacity: 1,
         y: "0%",
     })
-
-    
+ 
 })
-
 
 // ------------- reveal section animations ---------------
 
@@ -130,54 +70,6 @@ sections.forEach((sec) => {
         }, "-=0.4") // Start slightly before the reveal-up elements finish
     }
 })
-
-// Collapsible education toggles
-document.addEventListener('DOMContentLoaded', () => {
-  const toggles = document.querySelectorAll('.edu-toggle');
-
-  toggles.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const targetId = btn.dataset.target;
-      const panel = document.getElementById(targetId);
-      if (!panel) return;
-
-      const isOpen = btn.getAttribute('aria-expanded') === 'true';
-
-      if (isOpen) {
-        // close
-        panel.style.maxHeight = '0';
-        btn.setAttribute('aria-expanded', 'false');
-        const icon = btn.querySelector('.chev-icon');
-        if (icon) icon.classList.remove('tw-rotate-180');
-      } else {
-        // open
-        // set maxHeight to scrollHeight to animate open
-        panel.style.maxHeight = panel.scrollHeight + 'px';
-        btn.setAttribute('aria-expanded', 'true');
-        const icon = btn.querySelector('.chev-icon');
-        if (icon) icon.classList.add('tw-rotate-180');
-      }
-    });
-
-    // Optional: if you want keyboard users to toggle with Enter/Space on the button
-    btn.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        btn.click();
-      }
-    });
-  });
-
-  // Optional: Fix maxHeight if images load later (recompute open panels)
-  window.addEventListener('resize', () => {
-    document.querySelectorAll('.edu-content').forEach(panel => {
-      const parentBtn = document.querySelector(`.edu-toggle[data-target="${panel.id}"]`);
-      if (parentBtn && parentBtn.getAttribute('aria-expanded') === 'true') {
-        panel.style.maxHeight = panel.scrollHeight + 'px';
-      }
-    });
-  });
-});
 
 function openModal(projectId) {
   document.getElementById(`${projectId}-modal`).style.display = "flex";
