@@ -316,31 +316,43 @@ html {
   top: 1.2rem; 
 }
 
-/* --- Responsive Timeline --- */
 @media (max-width: 1024px) {
+  .timeline {
+    position: relative;
+    padding-left: 2.5rem;
+  }
+
+  .timeline::before {
+    left: 1.5rem;
+  }
+
+  .timeline-item {
+    position: relative;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 2.5rem;
+  }
+
   .timeline-item.left > .tw-text-right,
   .timeline-item.right > .tw-text-left {
     width: 100% !important;
     text-align: left !important;
     margin: 0 !important;
-    padding-left: 2.5rem !important;
-  }
-
-  .timeline::before {
-    left: 1rem;
+    padding-left: 0 !important;
   }
 
   .timeline-icon {
-    left: 1rem;
-    transform: none;
+    position: absolute;
+    left: 1.5rem;          
+    transform: translate(-50%, 0); 
+    top: 0.3rem;           
+    z-index: 10;
   }
 
-  .timeline-item {
-    flex-direction: column;
-    align-items: flex-start;
+  .timeline-icon i {
+    font-size: 1.1rem;
   }
 }
-
 
 /* --- PROJECTS SECTION --- */
 .projects-section {
@@ -487,9 +499,9 @@ html {
 
 .modal-buttons {
   display: flex;
-  gap: 12px; /* ✅ clean and modern spacing */
+  gap: 12px; 
   margin-top: 1.5rem;
-  flex-wrap: wrap; /* optional, helps on smaller screens */
+  flex-wrap: wrap; 
 }
 
 /* Close button */
@@ -523,7 +535,7 @@ html {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: #fff; /* important for visibility */
+  background: #fff;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
@@ -591,33 +603,75 @@ html {
   scroll-padding-top: 80px;
 }
 
-/* --- Responsive Nav --- */
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #000;
+}
+
 @media (max-width: 768px) {
-  .nav-container {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0.5rem 1rem;
+  .section-navigation {
+    position: sticky;  
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   }
 
+  .nav-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.75rem 1rem;
+  }
+
+  /* Dropdown menu positioning */
   .nav-links-center {
-    position: static;
-    transform: none;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 1rem;
-    margin-top: 0.5rem;
+    display: none;
+    flex-direction: column;
+    position: absolute;   
+    top: 100%;          
+    left: 0;
+    width: 100%;
+    background: #fff;
+    border-top: 1px solid #e5e7eb;
+    padding: 0.75rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links-center.active {
+    display: flex;
+    animation: slideDown 0.3s ease forwards;
   }
 
   .nav-icons-right {
-    margin-top: 0.5rem;
-    gap: 0.5rem;
+    display: none;
   }
 
-  .nav-link {
-    font-size: 0.9rem;
+  .menu-toggle {
+    display: block;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #000;
+    position: relative;
+    z-index: 1001;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
-
 
 /* ==================== ABOUT SECTION ==================== */
 .wave {
@@ -692,7 +746,6 @@ html {
   display: block;
 }
 
-/* Responsive: stack vertically on mobile */
 @media (max-width: 900px) {
   .about-container {
     flex-direction: column;
@@ -708,7 +761,6 @@ html {
   background-color: #fffef5;
 }
 
-/* Bubbles behind content */
 .hero-section::before,
 .hero-section::after {
   content: "";
@@ -746,43 +798,31 @@ body {
   margin-top: 0;
 }
 
-.achievements-section .tw-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1.5rem;
-  align-items: center;
-  justify-items: center;
-}
-
-.achievements-section img {
-  width: 100%;
-  max-width: 120px;
-  height: auto;
-  object-fit: contain;
-}
-
-/* Reduce padding on small screens */
+/* ==================== CERTIFICATIONS SECTION ==================== */
 @media (max-width: 768px) {
-  .achievements-section {
-    padding: 2rem 1rem;
+  #achievements .tw-mt-6 {
+    flex-wrap: wrap !important;         
+    justify-content: center !important; 
+    max-width: 100% !important;         
+    overflow: hidden !important;        
+  }
+
+  #achievements .reveal-up {
+    flex: 1 1 auto !important;          
+    max-width: 100% !important;      
   }
 }
 
-/* ===================================== */
-/* ✅ UNIFORM GAP BETWEEN SECTIONS */
-/* ===================================== */
+/* ======================== UNIFORM GAP BETWEEN SECTIONS ========================= */
 
 section {
-  /* Keep internal paddings as they are */
   position: relative;
 }
 
-/* Equal gap BETWEEN sections (visual spacing) */
 section + section {
-  margin-top: 4rem;  /* or 64px for Tailwind consistency */
+  margin-top: 4rem; 
 }
 
-/* Optional: slightly smaller on mobile for balance */
 @media (max-width: 768px) {
   section + section {
     margin-top: 3rem;

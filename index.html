@@ -45,6 +45,11 @@
                 <!-- Left logo -->
                 <a href="#about" class="nav-logo-left">MM</a>
 
+                <!-- Hamburger icon for mobile -->
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="bi bi-list"></i>
+                </div>
+
                 <!-- Center links -->
                 <div class="nav-links-center">
                     <a href="#about" class="nav-link" data-section="about">About</a>
@@ -752,6 +757,25 @@
         crossorigin="anonymous"
         referrerpolicy="no-referrer"
     ></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.querySelector(".nav-links-center");
+        const links = document.querySelectorAll(".nav-links-center .nav-link");
+
+        // Toggle menu open/close
+        menuToggle.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+        });
+
+        // Close menu when a link is clicked
+        links.forEach(link => {
+            link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+            });
+        });
+        });
+    </script>
 
     <script src="./index.js"></script>
 
