@@ -176,7 +176,6 @@ html {
 /* --- TESTIMONIAL SECTION --- */
 .testimonial-section {
   text-align: center;
-  padding: 4rem 2rem;
   max-width: 800px;
   margin: 4rem auto;
   position: relative;
@@ -317,14 +316,22 @@ html {
   top: 1.2rem; 
 }
 
-/* Responsive stacking */
-@media (max-width: 768px) {
+/* --- Responsive Timeline --- */
+@media (max-width: 1024px) {
+  .timeline-item.left > .tw-text-right,
+  .timeline-item.right > .tw-text-left {
+    width: 100% !important;
+    text-align: left !important;
+    margin: 0 !important;
+    padding-left: 2.5rem !important;
+  }
+
   .timeline::before {
-    left: 0.5rem;
+    left: 1rem;
   }
 
   .timeline-icon {
-    left: 0.5rem;
+    left: 1rem;
     transform: none;
   }
 
@@ -332,14 +339,8 @@ html {
     flex-direction: column;
     align-items: flex-start;
   }
-
-  .timeline-item > div {
-    width: 100% !important;
-    text-align: left !important;
-    margin: 0 !important;
-    padding-left: 3rem !important;
-  }
 }
+
 
 /* --- PROJECTS SECTION --- */
 .projects-section {
@@ -590,10 +591,33 @@ html {
   scroll-padding-top: 80px;
 }
 
-/* Add consistent space only BETWEEN sections */
-section + section {
-  margin-top: 4rem;
+/* --- Responsive Nav --- */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.5rem 1rem;
+  }
+
+  .nav-links-center {
+    position: static;
+    transform: none;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .nav-icons-right {
+    margin-top: 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+  }
 }
+
 
 /* ==================== ABOUT SECTION ==================== */
 .wave {
@@ -721,3 +745,51 @@ body {
 .hero-section + * {
   margin-top: 0;
 }
+
+.achievements-section .tw-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+  align-items: center;
+  justify-items: center;
+}
+
+.achievements-section img {
+  width: 100%;
+  max-width: 120px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Reduce padding on small screens */
+@media (max-width: 768px) {
+  .achievements-section {
+    padding: 2rem 1rem;
+  }
+}
+
+/* ===================================== */
+/* ✅ UNIFORM GAP BETWEEN SECTIONS */
+/* ===================================== */
+
+section {
+  /* Keep internal paddings as they are */
+  position: relative;
+}
+
+/* Equal gap BETWEEN sections (visual spacing) */
+section + section {
+  margin-top: 4rem;  /* or 64px for Tailwind consistency */
+}
+
+/* Optional: slightly smaller on mobile for balance */
+@media (max-width: 768px) {
+  section + section {
+    margin-top: 3rem;
+  }
+}
+
+#about {
+  margin-bottom: 4rem !important;
+}
+
