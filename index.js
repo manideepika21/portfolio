@@ -1,39 +1,50 @@
 /*** Animations*/
-
 gsap.registerPlugin(ScrollTrigger)
+gsap.to(".reveal-hero-text", {opacity: 0, y: "100%",})
+gsap.to(".reveal-hero-img", {opacity: 0, y: "100%",})
+gsap.to(".reveal-up", {opacity: 0, y: "100%",})
 
-gsap.to(".reveal-hero-text", {
-    opacity: 0,
-    y: "100%",
-})
-
-gsap.to(".reveal-hero-img", {
-    opacity: 0,
-    y: "100%",
-})
-
-gsap.to(".reveal-up", {
-    opacity: 0,
-    y: "100%",
-})
+let bugChart;
+let bugCategoryBarChart;
 
 window.addEventListener("load", () => {
-    // animate from initial position
+
+    // Hero animations
     gsap.to(".reveal-hero-text", {
         opacity: 1,
         y: "0%",
         duration: 0.8,
-        // ease: "power3.out",
-        stagger: 0.5, // Delay between each word's reveal,
-        // delay: 3
-    })
+        stagger: 0.5,
+    });
 
     gsap.to(".reveal-hero-img", {
         opacity: 1,
         y: "0%",
-    })
- 
-})
+    });
+
+    // Create bug chart
+    createBugChart();
+    createBarChart();
+    updateBugStats();
+
+    // Watch for badge changes
+    const badgeObserver = new MutationObserver(() => {
+        updateBugChart();
+        updateBarChart();
+        updateBugStats();
+    });
+
+    document.querySelectorAll(".issue-card .badge").forEach(badge => {
+        badgeObserver.observe(badge, {
+            childList: true,
+            characterData: true,
+            subtree: true,
+            attributes: true,
+            attributeFilter: ["class"]
+        });
+    });
+
+});
 
 // ------------- reveal section animations ---------------
 
@@ -102,7 +113,8 @@ const items = document.querySelectorAll(".timeline-item");
   items.forEach((item) => observer.observe(item));
 
 // Testimonial section start
-  const carousel = document.getElementById('testimonial-carousel');
+const carousel = document.getElementById('testimonial-carousel');
+if (carousel) {
   const slides = carousel.querySelectorAll('.slide');
   const dotsContainer = document.getElementById('testimonial-dots');
 
@@ -147,8 +159,8 @@ const items = document.querySelectorAll(".timeline-item");
   // ✅ Auto-slide logic
   function startAutoSlide() {
     autoSlideInterval = setInterval(() => {
-      nextSlide(); // this ensures dot updates *exactly* with each slide
-    }, 5000); // every 5 seconds
+      nextSlide();
+    }, 5000);
   }
 
   function stopAutoSlide() {
@@ -161,6 +173,8 @@ const items = document.querySelectorAll(".timeline-item");
   // ✅ Pause on hover
   carousel.addEventListener('mouseenter', stopAutoSlide);
   carousel.addEventListener('mouseleave', startAutoSlide);
+}
+
 //Testimonial section end
 
 // Section Navigation Script
@@ -209,4 +223,232 @@ const items = document.querySelectorAll(".timeline-item");
             // Set initial active state
             updateActiveNav();
         });
+
+// Count bug statuses from all badges
+function getBugStatusCounts() {
+    const counts = {
+        Closed: 0,
+        Confirmed: 0,
+        Rejected: 0,
+        Open: 0
+    };
+
+    document.querySelectorAll(".issue-card .badge").forEach(badge => {
+
+        // Count by CSS class
+        if (badge.classList.contains("badge-violet")) {
+            counts.Closed++;
+        }
+        else if (badge.classList.contains("badge-green")) {
+            counts.Confirmed++;
+        }
+        else if (badge.classList.contains("badge-red")) {
+            counts.Rejected++;
+        }
+        else if (badge.classList.contains("badge-yellow")) {
+            counts.Open++;
+        }
+
+    });
+
+    return counts;
+}
+
+// Create the chart
+function createBugChart() {
+
+    const canvas = document.getElementById("bugAnalysisdonut");
+
+    if (!canvas) return;
+
+    const counts = getBugStatusCounts();
+
+    bugChart = new Chart(canvas, {
+        type: "doughnut",
+        data: {
+            labels: ["Closed", "Confirmed", "Rejected", "Open"],
+            datasets: [{
+                data: [
+                    counts.Closed,
+                    counts.Confirmed,
+                    counts.Rejected,
+                    counts.Open
+                ],
+                backgroundColor: [
+                    "#8b5cf6",
+                    "#22c55e",
+                    "#ef4444",
+                    "#f59e0b"
+                ],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: "65%",
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+}
+
+// Update chart data
+function updateBugChart() {
+
+    if (!bugChart) return;
+
+    const counts = getBugStatusCounts();
+
+    bugChart.data.datasets[0].data = [
+        counts.Closed,
+        counts.Confirmed,
+        counts.Rejected,
+        counts.Open
+    ];
+
+    bugChart.update();
+}
+
+// Count Confirmed/Rejected/Open per category (Compiler/RBFuzzer/XLA)
+function getCategoryStatusCounts() {
+    const categories = {
+        Compiler: "CompilerBugsList",
+        RBFuzzer: "RBFuzzerList",
+        XLA: "XLABugsList"
+    };
+
+    const statusClasses = {
+        Closed: "badge-violet",
+        Confirmed: "badge-green",
+        Rejected: "badge-red",
+        Open: "badge-yellow"
+    };
+
+    const result = {};
+
+    Object.entries(categories).forEach(([catName, listId]) => {
+        const list = document.getElementById(listId);
+        const counts = { Closed: 0, Confirmed: 0, Rejected: 0, Open: 0 };
+
+        if (list) {
+            list.querySelectorAll(".badge").forEach(badge => {
+                Object.entries(statusClasses).forEach(([status, cls]) => {
+                    if (badge.classList.contains(cls)) counts[status]++;
+                });
+            });
+        }
+
+        result[catName] = counts;
+    });
+
+    return result;
+}
+
+function createBarChart() {
+    const canvas = document.getElementById("bugCategoryBar");
+    if (!canvas) return;
+
+    const data = getCategoryStatusCounts();
+    const categories = Object.keys(data);
+    const statuses = ["Closed", "Confirmed", "Rejected", "Open"];
+    const colors = {
+        Closed: "#8b5cf6",
+        Confirmed: "#22c55e",
+        Rejected: "#ef4444",
+        Open: "#f59e0b"
+    };
+
+    bugCategoryBarChart = new Chart(canvas, {
+        type: "bar",
+        data: {
+            labels: categories,
+            datasets: statuses.map(status => ({
+                label: status,
+                data: categories.map(cat => data[cat][status]),
+                backgroundColor: colors[status],
+                borderRadius: 4
+            }))
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: { stacked: true, grid: { display: false } },
+                y: { stacked: true, beginAtZero: true, ticks: { precision: 0 } }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+}
+
+function updateBarChart() {
+    if (!bugCategoryBarChart) return;
+    const data = getCategoryStatusCounts();
+    const statuses = ["Closed", "Confirmed", "Rejected", "Open"];
+    bugCategoryBarChart.data.datasets.forEach((ds, i) => {
+        ds.data = Object.keys(data).map(cat => data[cat][statuses[i]]);
+    });
+    bugCategoryBarChart.update();
+}
+
+function updateBugStats() {
+    const counts = getBugStatusCounts();
+
+    // Total = Open + Confirmed + Rejected + Closed
+    const total =
+        counts.Open +
+        counts.Confirmed +
+        counts.Rejected +
+        counts.Closed;
+
+    // Accepted = Confirmed + Closed
+    const accepted =
+        counts.Confirmed +
+        counts.Closed;
+
+    document.getElementById("stat-total").textContent = total;
+    document.getElementById("stat-mastered").textContent = accepted;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const badges = document.querySelectorAll(".badge");
+    const earnedBadges = document.querySelectorAll(".badge.earned");
+    const cards = document.querySelectorAll(".card");
+
+    // Total badges
+    document.getElementById("stat-total").firstChild.textContent =
+        earnedBadges.length;
+
+    // Categories mastered
+    let mastered = 0;
+
+    cards.forEach(card => {
+        const total = card.querySelectorAll(".badge").length;
+        const earned = card.querySelectorAll(".badge.earned").length;
+
+        const progress = card.querySelector(".card-progress");
+        progress.innerHTML = `<b>${earned}</b>`;
+
+        const fill = card.querySelector(".bar-fill");
+        fill.style.width = `${earned / total * 100}%`;
+
+        if (earned === total) mastered++;
+    });
+
+    document.getElementById("stat-mastered").firstChild.textContent = mastered;
+
+    const score = Math.round((earnedBadges.length / badges.length) * 100);
+
+    document.getElementById("stat-score").firstChild.textContent = score;
+
+});
 // Section Navigation ends</script>

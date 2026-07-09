@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyTorch Bug Reports</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+</head>
+
+<body>
+
+<div class="bugs-dashboard">
+    <div class="scoreboard">
+        <div class="title-group">
+            <a href="./index.html"
+            class="profile-home"
+            aria-label="Back to Portfolio">
+
+                <img src="./assets/images/home.png"
+                    alt="Back to Portfolio"
+                    class="profile-avatar">
+
+                <span class="material-icons home-icon">home</span>
+
+                <span class="profile-tooltip">
+                    Back to Portfolio
+                </span>
+
+            </a>
+
+            <div class="title-block">
+                <h1>List of Pytorch and Jax bugs reported</h1>
+                <p>
+                    A curated collection of reported Pytorch and Jax bugs,
+                    demonstrating issues across different components and functionalities.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="stats">
+            <div class="stat teal"><div class="num" id="stat-total">0</div><div class="label">Bugs Reported</div></div>
+            <div class="stat gold"><div class="num" id="stat-mastered">0</div><div class="label">Bugs Accepted</div></div>
+        </div>
+    </div>
+    
+    <div class="dashboard">
+        
+        <!-- Bug Analysis -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Bug Analysis</div>
+            </div>
+            <div class="card-body">
+                <div class="analysis-wrap">
+                    <div class="chart-canvas-box">
+                        <canvas id="bugAnalysisdonut"></canvas>
+                    </div>
+                    <div class="bar-chart-box">
+                        <canvas id="bugCategoryBar"></canvas>
+                    </div>
+                </div>    
+                    
+                <div class="legend">
+                    <div class="legend-item"><span class="legend-dot dot-violet"></span>Closed</div>
+                    <div class="legend-item"><span class="legend-dot dot-green"></span>Confirmed</div>
+                    <div class="legend-item"><span class="legend-dot dot-red"></span>Rejected</div>
+                    <div class="legend-item"><span class="legend-dot dot-amber"></span>Open</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Compiler Issues -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Compiler bugs</div>
+            </div>
+            <div class="card-body">
+                <div class="scroll-card" id="CompilerBugsList">
+                    <a href="https://github.com/pytorch/pytorch/issues/180980" target="_blank" class="issue-card">
+                        <span class="issue-id">#180980: AssertionError with invalid shapes</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/181006" target="_blank" class="issue-card">
+                        <span class="issue-id">#181006: UnboundLocalError at caching state in LayerNorm</span>
+                        <span class="badge badge-yellow">Open</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/181115" target="_blank" class="issue-card">
+                        <span class="issue-id">#181115: AttributeError when dynamic=True during compile</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/181175" target="_blank" class="issue-card">
+                        <span class="issue-id">#181175: RuntimeError when calling numel with dynamic=True</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/181177" target="_blank" class="issue-card">
+                        <span class="issue-id">#181177: RuntimeError in scaled_dot_product_attention for cpu backward</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/181266" target="_blank" class="issue-card">
+                        <span class="issue-id">#181266: AssertionError: unexpected group in codegen state</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/181304" target="_blank" class="issue-card">
+                        <span class="issue-id">#181304: FakeTensor AssertionError during backward pass</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/181305" target="_blank" class="issue-card">
+                        <span class="issue-id">#181305: Internal Assert Failure inside torch.func.grad</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/181384" target="_blank" class="issue-card">
+                        <span class="issue-id">#181384: RuntimeError with dynamic=True when composing torch.func.grad</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/181428" target="_blank" class="issue-card">
+                        <span class="issue-id">#181428: Timeout with MaxPool2d → log/clamp → pow → AdaptiveAvgPool2d chain</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/181618" target="_blank" class="issue-card">
+                        <span class="issue-id">#181618: Crash when non finite inputs passed</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/181621" target="_blank" class="issue-card">
+                        <span class="issue-id">#181621: Error when tmp8 used outside its declared scope</span>
+                        <span class="badge badge-yellow">Open</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/181624" target="_blank" class="issue-card">
+                        <span class="issue-id">#181624: AssertionError in simplify_and_reorder during scheduler node fusion</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/181638" target="_blank" class="issue-card">
+                        <span class="issue-id">#181638: Hangs indefinitely on LayerNorm → flatten → cumprod</span>
+                        <span class="badge badge-yellow">Open</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/181641" target="_blank" class="issue-card">
+                        <span class="issue-id">#181641: LinAlgError in svd with repeated embeddding rows</span>
+                        <span class="badge badge-red">Rejected</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/181653" target="_blank" class="issue-card">
+                        <span class="issue-id">#181653: torch.compile hangs indefinitely with pooling layers</span>
+                        <span class="badge badge-yellow">Open</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/181690" target="_blank" class="issue-card">
+                        <span class="issue-id">#181690: Check failed with LSTM model</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/181691" target="_blank" class="issue-card">
+                        <span class="issue-id">#181691: SIGABRT running TransformerEncoderLayer in eval mode</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/181692" target="_blank" class="issue-card">
+                        <span class="issue-id">#181692: Incorrect behaviour in RReLU in eval mode</span>
+                        <span class="badge badge-red">Rejected</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/181693" target="_blank" class="issue-card">
+                        <span class="issue-id">#181693: Eager-Compile difference with hardswish activation</span>
+                        <span class="badge badge-red">Rejected</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/181695" target="_blank" class="issue-card">
+                        <span class="issue-id">#181695: Inconsistent behaviour with inductor backend</span>
+                        <span class="badge badge-red">Rejected</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/181696" target="_blank" class="issue-card">
+                        <span class="issue-id">#181696: Incorrect output in BatchNorm in eval mode</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/185246" target="_blank" class="issue-card">
+                        <span class="issue-id">#185246: Output succeeds with invalid inputs</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/185247" target="_blank" class="issue-card">
+                        <span class="issue-id">#185247: SIGSEGV with negative input value</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/185248" target="_blank" class="issue-card">
+                        <span class="issue-id">#185248: Output succeeds with negative standard deviation</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/188213" target="_blank" class="issue-card">
+                        <span class="issue-id">#188213: scatter_reduce_ lowering trips an assertion during compilation</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/188214" target="_blank" class="issue-card">
+                        <span class="issue-id">#188214: LinAlgError with non-finite inputs</span>
+                        <span class="badge badge-red">Rejected</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/188217" target="_blank" class="issue-card">
+                        <span class="issue-id">#188217: TypeError performing reduce on empty iterable</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/188218" target="_blank" class="issue-card">
+                        <span class="issue-id">#188218: AssertionError when zero-dimension tensor passed to max</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/188222" target="_blank" class="issue-card">
+                        <span class="issue-id">#188222: Error using view in matrix_exp</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/188224" target="_blank" class="issue-card">
+                        <span class="issue-id">#188224: Dim-validation assertion fires during lowering</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/188225" target="_blank" class="issue-card">
+                        <span class="issue-id">#188225: Incorrect behaviour when i/p contains NaN</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/188226" target="_blank" class="issue-card">
+                        <span class="issue-id">#188226: Incorrect output when invalid value range constructed during index propagation</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/188227" target="_blank" class="issue-card">
+                        <span class="issue-id">#188227: RuntimeError with negative stride passed</span>
+                        <span class="badge badge-yellow">Open</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/188228" target="_blank" class="issue-card">
+                        <span class="issue-id">#188228: CPP backend raises KeyError for a buffer name while trying outer-loop fusion</span>
+                        <span class="badge badge-yellow">Open</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/188230" target="_blank" class="issue-card">
+                        <span class="issue-id">#188230: ValueError when calling minimum on boolean value</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/188231" target="_blank" class="issue-card">
+                        <span class="issue-id">#188231: TypeError when feeding boolean value into a sympy relational during indexing/codegen</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/188232" target="_blank" class="issue-card">
+                        <span class="issue-id">#188232: LinAlgError (ill-conditioned) in the compiled graph</span>
+                        <span class="badge badge-yellow">Open</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- RB Fuzzer Bugs -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">RBFuzzer Bugs</div>
+            </div>
+            <div class="card-body">
+                <div class="scroll-card" id="RBFuzzerList">
+                    <a href="https://github.com/pytorch/pytorch/issues/170298" target="_blank" class="issue-card">
+                        <span class="issue-id">#170298: Corrupted Zombie tensors when storage resize fails</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/170573" target="_blank" class="issue-card">
+                        <span class="issue-id">#170573: Buffer Overflow in standard ops via implicit view resizing</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/171356" target="_blank" class="issue-card">
+                        <span class="issue-id">#171356: CPU-GPU inconsistency using overflown floa16</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/171536" target="_blank" class="issue-card">
+                        <span class="issue-id">#171536: RuntimeError with empty input and large downscale factor</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/171838" target="_blank" class="issue-card">
+                        <span class="issue-id">#171838: SIGFPE with large upscale_factor</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/171931" target="_blank" class="issue-card">
+                        <span class="issue-id">#171931: CPU-GPU inconsistency with empty tensors</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/171948" target="_blank" class="issue-card">
+                        <span class="issue-id">#171948: CPU-GPU inconsistency with float16 inputs</span>
+                        <span class="badge badge-red">Rejected</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/172011" target="_blank" class="issue-card">
+                        <span class="issue-id">#172011: Crash with massive input value</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/172014" target="_blank" class="issue-card">
+                        <span class="issue-id">#172014: Shape mismatch with large input</span>
+                        <span class="badge badge-red">Rejected</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/172019" target="_blank" class="issue-card">
+                        <span class="issue-id">#172019: RuntimeError with out-of-bound i/p</span>
+                        <span class="badge badge-red">Rejected</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/173491" target="_blank" class="issue-card">
+                        <span class="issue-id">#173491: CPU/GPU Inconsistency with different dtypes</span>
+                        <span class="badge badge-red">Rejected</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/173495" target="_blank" class="issue-card">
+                        <span class="issue-id">#173495: Crash when cuda tensor passed to FBGEMM</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/173498" target="_blank" class="issue-card">
+                        <span class="issue-id">#173498: SIGSEGV on empty tensors in _stack</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/173500" target="_blank" class="issue-card">
+                        <span class="issue-id">#173500: SIGFPE on GPU when groups=0</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/173574" target="_blank" class="issue-card">
+                        <span class="issue-id">#173574: Crash when writing float results to int64 o/p tensor</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/173636" target="_blank" class="issue-card">
+                        <span class="issue-id">#173636: Incorrect output with uint16 dtype</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/173638" target="_blank" class="issue-card">
+                        <span class="issue-id">#173638: Incorrect o/p when NaN passed to input</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/173786" target="_blank" class="issue-card">
+                        <span class="issue-id">#173786: CPU-GPU inconsistency for infinite i/p</span>
+                        <span class="badge badge-red">Rejected</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/173796" target="_blank" class="issue-card">
+                        <span class="issue-id">#173796: Incorrect output with overflowing input</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/pytorch/pytorch/issues/173799" target="_blank" class="issue-card">
+                        <span class="issue-id">#173799: Inconsistent o/p with infinite input</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- XLA Bugs -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">XLA Bugs</div>
+            </div>
+            <div class="card-body">
+                <div class="scroll-card" id="XLABugsList">
+                    <a href="https://github.com/jax-ml/jax/issues/37234" target="_blank" class="issue-card">
+                        <span class="issue-id">#37234: Infinite o/p with large pre-activation values</span>
+                        <span class="badge badge-yellow">Open</span>
+                    </a>
+                    <a href="https://github.com/jax-ml/jax/issues/37281" target="_blank" class="issue-card">
+                        <span class="issue-id">#37281: Eager-Compile difference with unstable variance</span>
+                        <span class="badge badge-violet">Closed</span>
+                    </a>
+                    <a href="https://github.com/jax-ml/jax/issues/37955" target="_blank" class="issue-card">
+                        <span class="issue-id">#37955: SIGABRT while compiling a fused Triton GEMM</span>
+                        <span class="badge badge-yellow">Open</span>
+                    </a>
+                    <a href="https://github.com/jax-ml/jax/issues/38601" target="_blank" class="issue-card">
+                        <span class="issue-id">#38601: ConcretizationTypeError in jit with data-dependent output sizes</span>
+                        <span class="badge badge-violet">Closed</span>
+                    </a>
+                    <a href="https://github.com/jax-ml/jax/issues/38602" target="_blank" class="issue-card">
+                        <span class="issue-id">#38602: Eager-Compile difference when dividing jnp.cross(x, x) by itself</span>
+                        <span class="badge badge-yellow">Open</span>
+                    </a>
+                    <a href="https://github.com/jax-ml/jax/issues/38603" target="_blank" class="issue-card">
+                        <span class="issue-id">#38603: TracerBoolConversionError with unspecified size</span>
+                        <span class="badge badge-violet">Closed</span>
+                    </a>
+                    <a href="https://github.com/jax-ml/jax/issues/38609" target="_blank" class="issue-card">
+                        <span class="issue-id">#38609: Incorrect behaviour passing linalg.expm o/p through scaled dot-product attention</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/jax-ml/jax/issues/38610" target="_blank" class="issue-card">
+                        <span class="issue-id">#38610: ValueError when differentiating in betainc</span>
+                        <span class="badge badge-yellow">Open</span>
+                    </a>
+                    <a href="https://github.com/jax-ml/jax/issues/38611" target="_blank" class="issue-card">
+                        <span class="issue-id">#38611: Non-finite gradients involving cross and cholesky</span>
+                        <span class="badge badge-yellow">Open</span>
+                    </a>
+                    <a href="https://github.com/jax-ml/jax/issues/38679" target="_blank" class="issue-card">
+                        <span class="issue-id">#38679: NotImplementedError for nextafter</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/jax-ml/jax/issues/38681" target="_blank" class="issue-card">
+                        <span class="issue-id">#38681: Eager-Compiler difference for jnp.angle(jnp.logical_xor(t, t))</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/jax-ml/jax/issues/38768" target="_blank" class="issue-card">
+                        <span class="issue-id">#38768: Eager-Compiler difference with batch size=1</span>
+                        <span class="badge badge-red">Rejected</span>
+                    </a>
+                    <a href="https://github.com/jax-ml/jax/issues/38813" target="_blank" class="issue-card">
+                        <span class="issue-id">#38813: NotImplementedError running scaled_matmul on CPU</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/jax-ml/jax/issues/38825" target="_blank" class="issue-card">
+                        <span class="issue-id">#38825: Internal KeyError with float16 dtype in linalg.inv</span>
+                        <span class="badge badge-green">Confirmed</span>
+                    </a>
+                    <a href="https://github.com/jax-ml/jax/issues/38826" target="_blank" class="issue-card">
+                        <span class="issue-id">#38826: RuntimeError with overflowin jnp.kron</span>
+                        <span class="badge badge-red">Rejected</span>
+                    </a>
+                    <a href="https://github.com/jax-ml/jax/issues/38831" target="_blank" class="issue-card">
+                        <span class="issue-id">#38831: NotImplementedError for schur when used inside jnx.grad</span>
+                        <span class="badge badge-yellow">Open</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js"></script>
+<script src="./index.js"></script>
+</body>
+</html>
