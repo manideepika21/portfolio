@@ -325,17 +325,33 @@ html {
 }
 
 /* LEFT SIDE ITEM */
+/* ZOOM FIX: the parent .timeline-item already uses display:flex + justify-content:space-between
+   together with a matching .tw-w-1/2 placeholder div in the HTML to balance left/right sides.
+   In markup order the content div always comes first (before the placeholder div), which is
+   already the LEFT slot in a flex row - so the .left item needs no repositioning at all, just
+   the width/alignment below. (The old margin-right:6rem here was a harmless leftover; removing
+   it doesn't change this side's placement.) */
 .timeline-item.left > .tw-text-right {
   width: 45%;
   text-align: right;
-  margin-right: 6rem; 
 }
 
 /* RIGHT SIDE ITEM */
+/* ZOOM FIX: the content div is *also* first in markup order here, so without help it would
+   land in the left slot too (this is exactly what the earlier fix accidentally caused - see
+   screenshot). The original code used margin-left:40rem to physically shove it over to the
+   right, but that's a fixed-length value fighting a percentage-based flex layout, and drifts at
+   different zoom levels. Using flex `order` instead swaps which slot each div visually renders
+   in - the content div is told to render after the trailing placeholder div - which achieves the
+   same right-side placement without any zoom-dependent magic number. */
 .timeline-item.right > .tw-text-left {
   width: 45%;
   text-align: left;
-  margin-left: 40rem; 
+  order: 2;
+}
+
+.timeline-item.right > div:last-child {
+  order: 1;
 }
 
 .timeline-item.right .timeline-icon {
@@ -385,10 +401,16 @@ html {
 }
 
 /* --- PROJECTS SECTION --- */
+/* ZOOM FIX (part 2): min-height:80vh forced this section to a fixed fraction of the
+   *viewport*, regardless of how much content it actually held. vh doesn't scale in
+   step with the content (which is sized in rem/px), so zooming out reveals more CSS-px
+   of viewport without the content growing to match — leaving a large empty gap below
+   the projects before the testimonials section starts. Sizing to content + generous
+   padding keeps the same spacious look at 100% zoom while staying correct at any zoom. */
 .projects-section {
   width: 100%;
-  min-height: 80vh;
-  padding: 2rem;
+  min-height: auto;
+  padding: 4rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -732,13 +754,16 @@ html {
 .about-container {
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: stretch; /* ZOOM FIX: was center; stretch keeps both columns the same
+                            height as each other via flex instead of a fixed vh number */
   justify-content: space-between;
   flex-wrap: nowrap; 
   gap: 40px;
   position: relative;
   z-index: 1;
   margin: 0;
+  flex: 1; /* fills the full height that .hero-section now reserves below - see
+              .hero-section's min-height + display:flex further down this file */
 }
 
 /* Left text column */
@@ -746,6 +771,12 @@ html {
   flex: 1;
   min-width: 300px;
   max-width: 600px;
+  display: flex;            /* the column now stretches to the same full height as the
+                                image (see .about-container's align-items:stretch), so
+                                this centers the actual text block vertically within
+                                that height instead of leaving it pinned to the top */
+  flex-direction: column;
+  justify-content: center;
 }
 
 .about-text h1 {
@@ -772,24 +803,88 @@ html {
   line-height: 1.6;
   color: #333;
 }
+
+/* NEW: stat highlights row */
+.about-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.about-stat-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.about-stat {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.about-stat:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(8, 99, 8, 0.15);
+}
+
+.about-stat i {
+  font-size: 22px;
+  color: #086308;
+}
+
+.about-stat-num {
+  font-size: 20px;
+  font-weight: 700;
+  color: #086308;
+}
+
+.about-stat-label {
+  font-size: 11px;
+  color: #444;
+  letter-spacing: 0.03em;
+}
+/* END stat highlights row */
+
 .about-container > div:last-child {
   flex: 1;
   min-width: 300px;
   max-width: 550px;
   text-align: center;
+  display: flex; /* ZOOM FIX: lets the img below stretch to match the text
+                    column's natural height instead of a hardcoded vh value */
 }
 
+/* ZOOM FIX: the old rule used height:92.75vh, a magic viewport-relative number that
+   was tuned to look right at one specific zoom/viewport combo. Because vh doesn't
+   track the height of the sibling text column, the image and text drifted apart
+   (and sometimes overflowed) at other zoom levels. Sizing the image at 100%/100%
+   inside a stretched flex child keeps it locked to its column at any zoom level. */
 .about-container img {
-  width: 110%;
-  height: 92.75vh;
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
   object-fit: cover;
   display: block;
+  border-radius: 4px;
 }
 
 @media (max-width: 900px) {
   .about-container {
     flex-direction: column;
     text-align: center;
+  }
+
+  .about-stats {
+    justify-content: center;
+  }
+
+  .about-container img {
+    height: 60vh;
+    min-height: 260px;
   }
 }
 
@@ -798,7 +893,14 @@ html {
   overflow: hidden; 
   padding: 0 0 0 5%; 
   box-sizing: border-box; 
-  background-color: #fffef5; } 
+  background-color: #fffef5;
+  display: flex;       /* makes .about-container's height resolvable so the stretched
+                           image column and centered text column both work correctly */
+  min-height: calc(100vh - var(--nav-height, 60px)); /* fills exactly the space below
+    the sticky nav, not a full 100vh stacked underneath it. --nav-height is measured and
+    set in index.js from the real rendered nav height; 60px is just the fallback used for
+    the instant before that JS runs. */
+}
 
 .hero-section::before, 
 .hero-section::after { 
@@ -1332,4 +1434,19 @@ section + section {
 
 #about {
   margin-bottom: 4rem !important;
+}
+
+/* ZOOM FIX (part 3): the "Work Experience" section carries tailwind's
+   min-h-[100vh] + place-content-center (vertically centers its single flex row inside
+   a full-viewport-height box). Same root cause as the projects-section fix above: at
+   100% zoom the content is roughly as tall as the viewport so it's barely noticeable,
+   but zooming out grows the CSS-px viewport past the content's actual size and the
+   centered content gets stranded with large empty space above and below it, breaking
+   the section off from its neighbors. #experience has higher specificity than the
+   .tw-min-h-\[100vh\] utility class, so this overrides it without touching the
+   generated tailwind file. */
+#experience {
+  min-height: auto;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }

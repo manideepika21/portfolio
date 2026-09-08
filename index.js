@@ -7,6 +7,130 @@ gsap.to(".reveal-up", {opacity: 0, y: "100%",})
 let bugChart;
 let bugCategoryBarChart;
 
+/* ====================================================================
+   REFACTOR: SHARED COMPONENT RENDERERS
+   ====================================================================
+   These two functions used to be hand-copied HTML in tensorflow_bugs.html,
+   pytorch_bugs.html and skill_badges.html. Now each page just supplies data
+   (title/subtitle/stats, or a list of issues) and defines
+   `window.initPageContent` to call these before the rest of the page's
+   scripts (charts, badge counters, etc.) run. See index.js's early
+   DOMContentLoaded listener below for the call site.
+   ==================================================================== */
+
+// Maps a short status key (as used in each page's data array) to the badge
+// CSS class + label that used to be written out by hand on every <a> tag.
+const STATUS_MAP = {
+    confirmed: { cls: "badge-green", label: "Confirmed" },
+    open: { cls: "badge-yellow", label: "Open" },
+    rejected: { cls: "badge-red", label: "Rejected" },
+    closed: { cls: "badge-violet", label: "Closed" },
+};
+
+/**
+ * Renders the "scoreboard" header (home icon + title/subtitle + stat boxes)
+ * that is identical in structure across tensorflow_bugs.html, pytorch_bugs.html
+ * and skill_badges.html.
+ *
+ * @param {Object} opts
+ * @param {string} opts.mountSelector - CSS selector for the empty container to fill.
+ * @param {string} [opts.homeHref] - link back to the portfolio, defaults to "./index.html".
+ * @param {string} opts.title
+ * @param {string} opts.subtitle
+ * @param {Array<{id:string, label:string, variant?:string}>} opts.stats - id is the
+ *        element id later used by updateBugStats()/the badge counter to fill in the number.
+ */
+function renderScoreboard(opts) {
+    const {
+        mountSelector,
+        homeHref = "./index.html",
+        title,
+        subtitle,
+        stats = [],
+    } = opts;
+
+    const mount = document.querySelector(mountSelector);
+    if (!mount) return;
+
+    const statsHtml = stats.map(stat => `
+        <div class="stat ${stat.variant || ""}">
+            <div class="num" id="${stat.id}">0</div>
+            <div class="label">${stat.label}</div>
+        </div>
+    `).join("");
+
+    mount.innerHTML = `
+        <div class="title-group">
+            <a href="${homeHref}" class="profile-home" aria-label="Back to Portfolio">
+                <img src="./assets/images/home.png" alt="Back to Portfolio" class="profile-avatar">
+                <span class="material-icons home-icon">home</span>
+                <span class="profile-tooltip">Back to Portfolio</span>
+            </a>
+            <div class="title-block">
+                <h1>${title}</h1>
+                <p>${subtitle}</p>
+            </div>
+        </div>
+        <div class="stats">
+            ${statsHtml}
+        </div>
+    `;
+}
+
+/**
+ * Renders a list of <a class="issue-card"> entries into a scroll-card container,
+ * replacing the hand-written duplicate markup in tensorflow_bugs.html / pytorch_bugs.html.
+ *
+ * @param {string} containerId - id of the element (e.g. "CompilerBugsList") to fill.
+ * @param {Array<{number:string|number, description:string, url:string, status:keyof STATUS_MAP}>} issues
+ */
+function renderIssueList(containerId, issues = []) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    container.innerHTML = issues.map(issue => {
+        const status = STATUS_MAP[issue.status] || STATUS_MAP.open;
+        return `
+            <a href="${issue.url}" target="_blank" class="issue-card">
+                <span class="issue-id">#${issue.number}: ${issue.description}</span>
+                <span class="badge ${status.cls}">${status.label}</span>
+            </a>
+        `;
+    }).join("");
+}
+
+/* ====================================================================
+   Runs first among all DOMContentLoaded listeners (registered first in the
+   file, and DOMContentLoaded always fires after every synchronous script -
+   including each page's own inline data script - has already executed).
+   This guarantees the scoreboard header and any issue lists exist in the
+   DOM before the badge-counter / chart code below tries to read them.
+   Pages that don't need this (plain index.html) simply don't define
+   window.initPageContent, so this is a no-op there.
+   ==================================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+    if (typeof window.initPageContent === "function") {
+        window.initPageContent();
+    }
+});
+
+/* ====================================================================
+   Measures the sticky nav's real rendered height and exposes it as
+   --nav-height so .hero-section can size itself to exactly "the rest of
+   the screen below the nav" via calc(100vh - var(--nav-height)) in
+   index.css, instead of guessing a fixed pixel number that would drift
+   whenever the nav's own padding/font-size/breakpoint changes.
+   ==================================================================== */
+function updateNavHeightVar() {
+    const nav = document.getElementById("section-nav");
+    if (!nav) return;
+    document.documentElement.style.setProperty("--nav-height", `${nav.offsetHeight}px`);
+}
+
+document.addEventListener("DOMContentLoaded", updateNavHeightVar);
+window.addEventListener("load", updateNavHeightVar);
+window.addEventListener("resize", updateNavHeightVar);
+
 window.addEventListener("load", () => {
 
     // Hero animations
@@ -414,19 +538,36 @@ function updateBugStats() {
         counts.Confirmed +
         counts.Closed;
 
-    document.getElementById("stat-total").textContent = total;
-    document.getElementById("stat-mastered").textContent = accepted;
+    const totalEl = document.getElementById("stat-total");
+    const acceptedEl = document.getElementById("stat-mastered");
+
+    // Guarded: on skill_badges.html these same ids are populated by the badge
+    // counter below instead, so only write here if this is a bugs page.
+    if (totalEl && document.querySelector(".bugs-dashboard")) {
+        totalEl.textContent = total;
+    }
+    if (acceptedEl && document.querySelector(".bugs-dashboard")) {
+        acceptedEl.textContent = accepted;
+    }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+
+    // Guard: this block is only meaningful on skill_badges.html (the
+    // tech-dashboard page with earned/unearned badge categories). It used to
+    // run unconditionally and throw on the bugs pages, since .card-progress
+    // and .bar-fill only exist inside .tech-dashboard cards.
+    if (!document.querySelector(".tech-dashboard")) return;
 
     const badges = document.querySelectorAll(".badge");
     const earnedBadges = document.querySelectorAll(".badge.earned");
     const cards = document.querySelectorAll(".card");
 
     // Total badges
-    document.getElementById("stat-total").firstChild.textContent =
-        earnedBadges.length;
+    const statTotalEl = document.getElementById("stat-total");
+    if (statTotalEl && statTotalEl.firstChild) {
+        statTotalEl.firstChild.textContent = earnedBadges.length;
+    }
 
     // Categories mastered
     let mastered = 0;
@@ -436,19 +577,24 @@ document.addEventListener("DOMContentLoaded", () => {
         const earned = card.querySelectorAll(".badge.earned").length;
 
         const progress = card.querySelector(".card-progress");
-        progress.innerHTML = `<b>${earned}</b>`;
+        if (progress) progress.innerHTML = `<b>${earned}</b>`;
 
         const fill = card.querySelector(".bar-fill");
-        fill.style.width = `${earned / total * 100}%`;
+        if (fill && total > 0) fill.style.width = `${earned / total * 100}%`;
 
-        if (earned === total) mastered++;
+        if (total > 0 && earned === total) mastered++;
     });
 
-    document.getElementById("stat-mastered").firstChild.textContent = mastered;
+    const statMasteredEl = document.getElementById("stat-mastered");
+    if (statMasteredEl && statMasteredEl.firstChild) {
+        statMasteredEl.firstChild.textContent = mastered;
+    }
 
-    const score = Math.round((earnedBadges.length / badges.length) * 100);
-
-    document.getElementById("stat-score").firstChild.textContent = score;
+    const statScoreEl = document.getElementById("stat-score");
+    if (statScoreEl && statScoreEl.firstChild && badges.length > 0) {
+        const score = Math.round((earnedBadges.length / badges.length) * 100);
+        statScoreEl.firstChild.textContent = score;
+    }
 
 });
-// Section Navigation ends</script>
+// Section Navigation ends

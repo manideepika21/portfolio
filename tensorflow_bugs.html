@@ -13,41 +13,11 @@
 
 <div class="bugs-dashboard">
 
-  <div class="scoreboard">
-    <div class="title-group">
-        <a href="./index.html"
-           class="profile-home"
-           aria-label="Back to Portfolio">
+  <!-- REFACTOR: was a hand-written title-group + stats block (identical structure to
+       pytorch_bugs.html / skill_badges.html). renderScoreboard() in index.js fills this
+       in from the data below, so the markup only has to exist in one place. -->
+  <div class="scoreboard" id="scoreboard-mount"></div>
 
-            <img src="./assets/images/home.png"
-                 alt="Back to Portfolio"
-                 class="profile-avatar">
-
-            <span class="material-icons home-icon">home</span>
-
-            <span class="profile-tooltip">
-                Back to Portfolio
-            </span>
-
-        </a>
-
-        <div class="title-block">
-            <h1>List of Tensorflow bugs reported</h1>
-            <p>
-                A curated collection of reported Tensorflow bugs,
-                demonstrating issues across different components and functionalities.
-            </p>
-        </div>
-
-    </div>
-
-    <div class="stats">
-      <div class="stat teal"><div class="num" id="stat-total">0</div><div class="label">Bugs Reported</div></div>
-      <div class="stat gold"><div class="num" id="stat-mastered">0</div><div class="label">Bugs Accepted</div></div>
-    </div>
-  </div>
-
-    
     <div class="dashboard">
 
         <!-- Bug Analysis -->
@@ -80,124 +50,8 @@
                 <div class="card-title">Compiler bugs</div>
             </div>
             <div class="card-body">
-                <div class="scroll-card" id="CompilerBugsList">
-                    <a href="https://github.com/tensorflow/tensorflow/issues/117700" target="_blank" class="issue-card">
-                        <span class="issue-id">#117700: Memory corruption with rank-4 tensor</span>
-                        <span class="badge badge-green">Confirmed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/122046" target="_blank" class="issue-card">
-                        <span class="issue-id">#122046: InvalidArgumentError: No registered OpKernel</span>
-                        <span class="badge badge-yellow">Open</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/122047" target="_blank" class="issue-card">
-                        <span class="issue-id">#122047: InvalidArgumentError with identical shapes</span>
-                        <span class="badge badge-green">Confirmed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/122048" target="_blank" class="issue-card">
-                        <span class="issue-id">#122048: InvalidArgumentError when int32 values passed</span>
-                        <span class="badge badge-green">Confirmed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/122049" target="_blank" class="issue-card">
-                        <span class="issue-id">#122049: InvalidArgumentError: Invalid type for Range half</span>
-                        <span class="badge badge-yellow">Open</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/122050" target="_blank" class="issue-card">
-                        <span class="issue-id">#122050: InvalidArgumentError when tan output passed to range</span>
-                        <span class="badge badge-green">Confirmed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/122052" target="_blank" class="issue-card">
-                        <span class="issue-id">#122052: InvalidArgumentError when non broadcastable shapes are passed</span>
-                        <span class="badge badge-green">Confirmed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/122053" target="_blank" class="issue-card">
-                        <span class="issue-id">#122053: InvalidArgumentError when indices are non-contiguous</span>
-                        <span class="badge badge-green">Confirmed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/122054" target="_blank" class="issue-card">
-                        <span class="issue-id">#122054: InvalidArgumentError with out-of-bounds negative axes</span>
-                        <span class="badge badge-green">Confirmed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/122055" target="_blank" class="issue-card">
-                        <span class="issue-id">#122055: InvalidArgumentError with invalid broadcastable shapes</span>
-                        <span class="badge badge-green">Confirmed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/122056" target="_blank" class="issue-card">
-                        <span class="issue-id">#122056: FailedPreconditionError for cross product</span>
-                        <span class="badge badge-yellow">Open</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/122057" target="_blank" class="issue-card">
-                        <span class="issue-id">#122057: InvalidArgumentError when data dependent i/p passed</span>
-                        <span class="badge badge-red">Rejected</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/109648" target="_blank" class="issue-card">
-                        <span class="issue-id">#109648: InvalidArgumentError when empty tensors passed</span>
-                        <span class="badge badge-green">Confirmed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/110038" target="_blank" class="issue-card">
-                        <span class="issue-id">#110038: Eager-Compile difference when invalid i/p passed</span>
-                        <span class="badge badge-green">Confirmed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/110219" target="_blank" class="issue-card">
-                        <span class="issue-id">#110219: Compare type mismatch with int32 operand</span>
-                        <span class="badge badge-green">Confirmed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/110316" target="_blank" class="issue-card">
-                        <span class="issue-id">#110316: Incorrect output when invalid inputs passed</span>
-                        <span class="badge badge-green">Confirmed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/110789" target="_blank" class="issue-card">
-                        <span class="issue-id">#110789: Heap corruption with empty tensor</span>
-                        <span class="badge badge-green">Confirmed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/110796" target="_blank" class="issue-card">
-                        <span class="issue-id">#110796: Check failed with invalid input</span>
-                        <span class="badge badge-green">Confirmed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/110797" target="_blank" class="issue-card">
-                        <span class="issue-id">#110797: SIGABRT when invalid rank passed</span>
-                        <span class="badge badge-violet">Closed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/110798" target="_blank" class="issue-card">
-                        <span class="issue-id">#110798: Crash with check failed when dim=0</span>
-                        <span class="badge badge-green">Confirmed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/111438" target="_blank" class="issue-card">
-                        <span class="issue-id">#111438: Segmentation fault with scalar tensor</span>
-                        <span class="badge badge-green">Confirmed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/111453" target="_blank" class="issue-card">
-                        <span class="issue-id">#111453: Conv3D crashes with 5D input</span>
-                        <span class="badge badge-violet">Closed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/111457" target="_blank" class="issue-card">
-                        <span class="issue-id">#111457: MaxPool3D crashes with non 5D input</span>
-                        <span class="badge badge-green">Confirmed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/112068" target="_blank" class="issue-card">
-                        <span class="issue-id">#112068: Incorrect output with out of bound values</span>
-                        <span class="badge badge-yellow">Open</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/112132" target="_blank" class="issue-card">
-                        <span class="issue-id">#112132: SIGSEGV with negative index</span>
-                        <span class="badge badge-violet">Closed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/112135" target="_blank" class="issue-card">
-                        <span class="issue-id">#112135: Crash with check failed with incorrect ranks</span>
-                        <span class="badge badge-green">Confirmed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/112139" target="_blank" class="issue-card">
-                        <span class="issue-id">#112139: Segmentation fault with boolean tensor</span>
-                        <span class="badge badge-yellow">Open</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/112186" target="_blank" class="issue-card">
-                        <span class="issue-id">#112186: Incorrect behaviour with invalid input</span>
-                        <span class="badge badge-green">Confirmed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/112189" target="_blank" class="issue-card">
-                        <span class="issue-id">#112189: Incorrect behaviour with out-of-bound input</span>
-                        <span class="badge badge-green">Confirmed</span>
-                    </a>
-                </div>
+                <!-- REFACTOR: renderIssueList("CompilerBugsList", compilerBugs) fills this in -->
+                <div class="scroll-card" id="CompilerBugsList"></div>
             </div>
         </div>
 
@@ -207,80 +61,7 @@
                 <div class="card-title">RBFuzzer Bugs</div>
             </div>
             <div class="card-body">
-                <div class="scroll-card" id="RBFuzzerList">
-                    <a href="https://github.com/tensorflow/tensorflow/issues/106175" target="_blank" class="issue-card">
-                        <span class="issue-id">#106175: CPU-GPU inconsistency when casting NaN to int32</span>
-                        <span class="badge badge-green">Confirmed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/106388" target="_blank" class="issue-card">
-                        <span class="issue-id">#106388: CPU-GPU inconsistency for out-of-range values</span>
-                        <span class="badge badge-green">Confirmed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/106602" target="_blank" class="issue-card">
-                        <span class="issue-id">#106602: CPU-GPU inconsistency when NaN is passed</span>
-                        <span class="badge badge-green">Confirmed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/108548" target="_blank" class="issue-card">
-                        <span class="issue-id">#108548: Incorrect behaviour with invalid encoding</span>
-                        <span class="badge badge-red">Rejected</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/108605" target="_blank" class="issue-card">
-                        <span class="issue-id">#108605: Incorrect output when passing tensor</span>
-                        <span class="badge badge-red">Rejected</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/108608" target="_blank" class="issue-card">
-                        <span class="issue-id">#108608: Incorrect output when invalid data is passed</span>
-                        <span class="badge badge-red">Rejected</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/108621" target="_blank" class="issue-card">
-                        <span class="issue-id">#108621: Crash on large input</span>
-                        <span class="badge badge-green">Confirmed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/108628" target="_blank" class="issue-card">
-                        <span class="issue-id">#108628: Incorrect behaviour when out of range values passed</span>
-                        <span class="badge badge-red">Rejected</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/108629" target="_blank" class="issue-card">
-                        <span class="issue-id">#108629: CPU-GPU inconsistency when bfloat16 casted to int8</span>
-                        <span class="badge badge-red">Rejected</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/108663" target="_blank" class="issue-card">
-                        <span class="issue-id">#108663: Crash due to integer overflow</span>
-                        <span class="badge badge-green">Confirmed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/108664" target="_blank" class="issue-card">
-                        <span class="issue-id">#108664: SEGFAULT when invalid input is Passed</span>
-                        <span class="badge badge-green">Confirmed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/108665" target="_blank" class="issue-card">
-                        <span class="issue-id">#108665: Crash when large dimensions passed to tensor</span>
-                        <span class="badge badge-green">Confirmed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/108891" target="_blank" class="issue-card">
-                        <span class="issue-id">#108891: SIGABRT when input is overflowed</span>
-                        <span class="badge badge-green">Confirmed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/108904" target="_blank" class="issue-card">
-                        <span class="issue-id">#108904: SIGABRT when input is overflowed</span>
-                        <span class="badge badge-green">Confirmed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/108916" target="_blank" class="issue-card">
-                        <span class="issue-id">#108916: Crash when one of the dimension value is 0</span>
-                        <span class="badge badge-violet">Closed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/108921" target="_blank" class="issue-card">
-                        <span class="issue-id">#108921: SIGABRT with 1 large dimension and one 0 value</span>
-                        <span class="badge badge-green">Confirmed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/109148" target="_blank" class="issue-card">
-                        <span class="issue-id">#109148: SIGABRT on large shapes containing zero</span>
-                        <span class="badge badge-violet">Closed</span>
-                    </a>
-                    <a href="https://github.com/tensorflow/tensorflow/issues/109150" target="_blank" class="issue-card">
-                        <span class="issue-id">#109150: Crash with invalid input</span>
-                        <span class="badge badge-green">Confirmed</span>
-                    </a>
-                </div>
+                <div class="scroll-card" id="RBFuzzerList"></div>
             </div>
         </div>
 
@@ -290,64 +71,7 @@
                 <div class="card-title">XLA Bugs</div>
             </div>
             <div class="card-body">
-                <div class="scroll-card" id="XLABugsList">
-                    <a href="https://github.com/openxla/xla/issues/43052" target="_blank" class="issue-card">
-                        <span class="issue-id">#43052: InternalError with different floating precisions</span>
-                        <span class="badge badge-yellow">Open</span>
-                    </a>
-                    <a href="https://github.com/openxla/xla/issues/43449" target="_blank" class="issue-card">
-                        <span class="issue-id">#43449: Crash with 1002 cuDNN status</span>
-                        <span class="badge badge-yellow">Open</span>
-                    </a>
-                    <a href="https://github.com/openxla/xla/issues/43450" target="_blank" class="issue-card">
-                        <span class="issue-id">#43450: InternalError with different floating precisions</span>
-                        <span class="badge badge-yellow">Open</span>
-                    </a>
-                    <a href="https://github.com/openxla/xla/issues/43451" target="_blank" class="issue-card">
-                        <span class="issue-id">#43451: InternalError with different buffer sizes</span>
-                        <span class="badge badge-red">Rejected</span>
-                    </a>
-                    <a href="https://github.com/openxla/xla/issues/44837" target="_blank" class="issue-card">
-                        <span class="issue-id">#44837: Unimplemented error when clamping complex64 tensor</span>
-                        <span class="badge badge-yellow">Open</span>
-                    </a>
-                    <a href="https://github.com/openxla/xla/issues/44838" target="_blank" class="issue-card">
-                        <span class="issue-id">#44838: FailedPreconditionError with unsigned type</span>
-                        <span class="badge badge-yellow">Open</span>
-                    </a>
-                    <a href="https://github.com/openxla/xla/issues/44936" target="_blank" class="issue-card">
-                        <span class="issue-id">#44936: Crash when compiling Complex128 tensors</span>
-                        <span class="badge badge-yellow">Open</span>
-                    </a>
-                    <a href="https://github.com/openxla/xla/issues/44937" target="_blank" class="issue-card">
-                        <span class="issue-id">#44937: Segmentation Fault with incompatible shapes</span>
-                        <span class="badge badge-yellow">Open</span>
-                    </a>
-                    <a href="https://github.com/openxla/xla/issues/44940" target="_blank" class="issue-card">
-                        <span class="issue-id">#44940: Heap Corruption with float16</span>
-                        <span class="badge badge-yellow">Open</span>
-                    </a>
-                    <a href="https://github.com/openxla/xla/issues/44941" target="_blank" class="issue-card">
-                        <span class="issue-id">#44941: Crash with check failed with invalid size</span>
-                        <span class="badge badge-yellow">Open</span>
-                    </a>
-                    <a href="https://github.com/openxla/xla/issues/44942" target="_blank" class="issue-card">
-                        <span class="issue-id">#44942: SIGSEGV when rot90 o/p passed to cumsum </span>
-                        <span class="badge badge-yellow">Open</span>
-                    </a>
-                    <a href="https://github.com/openxla/xla/issues/44943" target="_blank" class="issue-card">
-                        <span class="issue-id">#44943: SIGABRT compiling lgamma with float16</span>
-                        <span class="badge badge-yellow">Open</span>
-                    </a>
-                    <a href="https://github.com/openxla/xla/issues/44944" target="_blank" class="issue-card">
-                        <span class="issue-id">#44944: Crash when compiling tf.where in xla</span>
-                        <span class="badge badge-yellow">Open</span>
-                    </a>
-                    <a href="https://github.com/openxla/xla/issues/44945" target="_blank" class="issue-card">
-                        <span class="issue-id">#44945: Inconsistent behaviour with empty tensor</span>
-                        <span class="badge badge-yellow">Open</span>
-                    </a>
-                </div>
+                <div class="scroll-card" id="XLABugsList"></div>
             </div>
         </div>
     </div>
@@ -357,5 +81,95 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js"></script>
 <script src="./index.js"></script>
+
+<!-- REFACTOR: page-specific data. Only this data array changes between tensorflow_bugs.html
+     and pytorch_bugs.html - all the rendering logic lives once in index.js. -->
+<script>
+    const compilerBugs = [
+        { number: 117700, description: "Memory corruption with rank-4 tensor", status: "confirmed", url: "https://github.com/tensorflow/tensorflow/issues/117700" },
+        { number: 122046, description: "InvalidArgumentError: No registered OpKernel", status: "open", url: "https://github.com/tensorflow/tensorflow/issues/122046" },
+        { number: 122047, description: "InvalidArgumentError with identical shapes", status: "confirmed", url: "https://github.com/tensorflow/tensorflow/issues/122047" },
+        { number: 122048, description: "InvalidArgumentError when int32 values passed", status: "confirmed", url: "https://github.com/tensorflow/tensorflow/issues/122048" },
+        { number: 122049, description: "InvalidArgumentError: Invalid type for Range half", status: "open", url: "https://github.com/tensorflow/tensorflow/issues/122049" },
+        { number: 122050, description: "InvalidArgumentError when tan output passed to range", status: "confirmed", url: "https://github.com/tensorflow/tensorflow/issues/122050" },
+        { number: 122052, description: "InvalidArgumentError when non broadcastable shapes are passed", status: "confirmed", url: "https://github.com/tensorflow/tensorflow/issues/122052" },
+        { number: 122053, description: "InvalidArgumentError when indices are non-contiguous", status: "confirmed", url: "https://github.com/tensorflow/tensorflow/issues/122053" },
+        { number: 122054, description: "InvalidArgumentError with out-of-bounds negative axes", status: "confirmed", url: "https://github.com/tensorflow/tensorflow/issues/122054" },
+        { number: 122055, description: "InvalidArgumentError with invalid broadcastable shapes", status: "confirmed", url: "https://github.com/tensorflow/tensorflow/issues/122055" },
+        { number: 122056, description: "FailedPreconditionError for cross product", status: "open", url: "https://github.com/tensorflow/tensorflow/issues/122056" },
+        { number: 122057, description: "InvalidArgumentError when data dependent i/p passed", status: "rejected", url: "https://github.com/tensorflow/tensorflow/issues/122057" },
+        { number: 109648, description: "InvalidArgumentError when empty tensors passed", status: "confirmed", url: "https://github.com/tensorflow/tensorflow/issues/109648" },
+        { number: 110038, description: "Eager-Compile difference when invalid i/p passed", status: "confirmed", url: "https://github.com/tensorflow/tensorflow/issues/110038" },
+        { number: 110219, description: "Compare type mismatch with int32 operand", status: "confirmed", url: "https://github.com/tensorflow/tensorflow/issues/110219" },
+        { number: 110316, description: "Incorrect output when invalid inputs passed", status: "confirmed", url: "https://github.com/tensorflow/tensorflow/issues/110316" },
+        { number: 110789, description: "Heap corruption with empty tensor", status: "confirmed", url: "https://github.com/tensorflow/tensorflow/issues/110789" },
+        { number: 110796, description: "Check failed with invalid input", status: "confirmed", url: "https://github.com/tensorflow/tensorflow/issues/110796" },
+        { number: 110797, description: "SIGABRT when invalid rank passed", status: "closed", url: "https://github.com/tensorflow/tensorflow/issues/110797" },
+        { number: 110798, description: "Crash with check failed when dim=0", status: "confirmed", url: "https://github.com/tensorflow/tensorflow/issues/110798" },
+        { number: 111438, description: "Segmentation fault with scalar tensor", status: "confirmed", url: "https://github.com/tensorflow/tensorflow/issues/111438" },
+        { number: 111453, description: "Conv3D crashes with 5D input", status: "closed", url: "https://github.com/tensorflow/tensorflow/issues/111453" },
+        { number: 111457, description: "MaxPool3D crashes with non 5D input", status: "confirmed", url: "https://github.com/tensorflow/tensorflow/issues/111457" },
+        { number: 112068, description: "Incorrect output with out of bound values", status: "open", url: "https://github.com/tensorflow/tensorflow/issues/112068" },
+        { number: 112132, description: "SIGSEGV with negative index", status: "closed", url: "https://github.com/tensorflow/tensorflow/issues/112132" },
+        { number: 112135, description: "Crash with check failed with incorrect ranks", status: "confirmed", url: "https://github.com/tensorflow/tensorflow/issues/112135" },
+        { number: 112139, description: "Segmentation fault with boolean tensor", status: "open", url: "https://github.com/tensorflow/tensorflow/issues/112139" },
+        { number: 112186, description: "Incorrect behaviour with invalid input", status: "confirmed", url: "https://github.com/tensorflow/tensorflow/issues/112186" },
+        { number: 112189, description: "Incorrect behaviour with out-of-bound input", status: "confirmed", url: "https://github.com/tensorflow/tensorflow/issues/112189" },
+    ];
+
+    const rbFuzzerBugs = [
+        { number: 106175, description: "CPU-GPU inconsistency when casting NaN to int32", status: "confirmed", url: "https://github.com/tensorflow/tensorflow/issues/106175" },
+        { number: 106388, description: "CPU-GPU inconsistency for out-of-range values", status: "confirmed", url: "https://github.com/tensorflow/tensorflow/issues/106388" },
+        { number: 106602, description: "CPU-GPU inconsistency when NaN is passed", status: "confirmed", url: "https://github.com/tensorflow/tensorflow/issues/106602" },
+        { number: 108548, description: "Incorrect behaviour with invalid encoding", status: "rejected", url: "https://github.com/tensorflow/tensorflow/issues/108548" },
+        { number: 108605, description: "Incorrect output when passing tensor", status: "rejected", url: "https://github.com/tensorflow/tensorflow/issues/108605" },
+        { number: 108608, description: "Incorrect output when invalid data is passed", status: "rejected", url: "https://github.com/tensorflow/tensorflow/issues/108608" },
+        { number: 108621, description: "Crash on large input", status: "confirmed", url: "https://github.com/tensorflow/tensorflow/issues/108621" },
+        { number: 108628, description: "Incorrect behaviour when out of range values passed", status: "rejected", url: "https://github.com/tensorflow/tensorflow/issues/108628" },
+        { number: 108629, description: "CPU-GPU inconsistency when bfloat16 casted to int8", status: "rejected", url: "https://github.com/tensorflow/tensorflow/issues/108629" },
+        { number: 108663, description: "Crash due to integer overflow", status: "confirmed", url: "https://github.com/tensorflow/tensorflow/issues/108663" },
+        { number: 108664, description: "SEGFAULT when invalid input is Passed", status: "confirmed", url: "https://github.com/tensorflow/tensorflow/issues/108664" },
+        { number: 108665, description: "Crash when large dimensions passed to tensor", status: "confirmed", url: "https://github.com/tensorflow/tensorflow/issues/108665" },
+        { number: 108891, description: "SIGABRT when input is overflowed", status: "confirmed", url: "https://github.com/tensorflow/tensorflow/issues/108891" },
+        { number: 108904, description: "SIGABRT when input is overflowed", status: "confirmed", url: "https://github.com/tensorflow/tensorflow/issues/108904" },
+        { number: 108916, description: "Crash when one of the dimension value is 0", status: "closed", url: "https://github.com/tensorflow/tensorflow/issues/108916" },
+        { number: 108921, description: "SIGABRT with 1 large dimension and one 0 value", status: "confirmed", url: "https://github.com/tensorflow/tensorflow/issues/108921" },
+        { number: 109148, description: "SIGABRT on large shapes containing zero", status: "closed", url: "https://github.com/tensorflow/tensorflow/issues/109148" },
+        { number: 109150, description: "Crash with invalid input", status: "confirmed", url: "https://github.com/tensorflow/tensorflow/issues/109150" },
+    ];
+
+    const xlaBugs = [
+        { number: 43052, description: "InternalError with different floating precisions", status: "open", url: "https://github.com/openxla/xla/issues/43052" },
+        { number: 43449, description: "Crash with 1002 cuDNN status", status: "open", url: "https://github.com/openxla/xla/issues/43449" },
+        { number: 43450, description: "InternalError with different floating precisions", status: "open", url: "https://github.com/openxla/xla/issues/43450" },
+        { number: 43451, description: "InternalError with different buffer sizes", status: "rejected", url: "https://github.com/openxla/xla/issues/43451" },
+        { number: 44837, description: "Unimplemented error when clamping complex64 tensor", status: "open", url: "https://github.com/openxla/xla/issues/44837" },
+        { number: 44838, description: "FailedPreconditionError with unsigned type", status: "open", url: "https://github.com/openxla/xla/issues/44838" },
+        { number: 44936, description: "Crash when compiling Complex128 tensors", status: "open", url: "https://github.com/openxla/xla/issues/44936" },
+        { number: 44937, description: "Segmentation Fault with incompatible shapes", status: "open", url: "https://github.com/openxla/xla/issues/44937" },
+        { number: 44940, description: "Heap Corruption with float16", status: "open", url: "https://github.com/openxla/xla/issues/44940" },
+        { number: 44941, description: "Crash with check failed with invalid size", status: "open", url: "https://github.com/openxla/xla/issues/44941" },
+        { number: 44942, description: "SIGSEGV when rot90 o/p passed to cumsum", status: "open", url: "https://github.com/openxla/xla/issues/44942" },
+        { number: 44943, description: "SIGABRT compiling lgamma with float16", status: "open", url: "https://github.com/openxla/xla/issues/44943" },
+        { number: 44944, description: "Crash when compiling tf.where in xla", status: "open", url: "https://github.com/openxla/xla/issues/44944" },
+        { number: 44945, description: "Inconsistent behaviour with empty tensor", status: "open", url: "https://github.com/openxla/xla/issues/44945" },
+    ];
+
+    window.initPageContent = function () {
+        renderScoreboard({
+            mountSelector: "#scoreboard-mount",
+            title: "List of Tensorflow bugs reported",
+            subtitle: "A curated collection of reported Tensorflow bugs, demonstrating issues across different components and functionalities.",
+            stats: [
+                { id: "stat-total", label: "Bugs Reported", variant: "teal" },
+                { id: "stat-mastered", label: "Bugs Accepted", variant: "gold" },
+            ],
+        });
+
+        renderIssueList("CompilerBugsList", compilerBugs);
+        renderIssueList("RBFuzzerList", rbFuzzerBugs);
+        renderIssueList("XLABugsList", xlaBugs);
+    };
+</script>
 </body>
 </html>
