@@ -92,28 +92,6 @@ html {
 .marquee-card:nth-child(even) {
   transform: rotate(3deg);
 }
-.marquee-card:nth-child(1) {
-  background-color: #eff6ff !important; /* blue-50 */
-}
-
-.marquee-card:nth-child(2) {
-  background-color: #f0fdf4 !important; /* green-50 */
-}
-
-.marquee-card:nth-child(3) {
-  background-color: #fefce8 !important; /* yellow-50 */
-}
-
-.marquee-card:nth-child(4) {
-  background-color: #fdf2f8 !important; /* pink-50 */
-}
-
-.marquee-card:nth-child(5) {
-  background-color: #f5f3ff !important; /* purple-50 */
-}
-.marquee-card:nth-child(6) {
-  background-color: #eff6ff !important; /* blue-50 */
-}
 .marquee-wrapper:hover .marquee-track {
   animation-play-state: paused;
 }
@@ -439,17 +417,7 @@ html {
   cursor: pointer;
   transition: transform 0.3s ease;
 }
-.project-card:nth-child(1) {
-  background-color: #eff6ff !important; /* blue-50 */
-}
 
-.project-card:nth-child(2) {
-  background-color: #f0fdf4 !important; /* green-50 */
-}
-
-.project-card:nth-child(3) {
-  background-color: #fefce8 !important; /* yellow-50 */
-}
 .project-card:hover {
   transform: translateY(-5px);
 }
@@ -893,7 +861,7 @@ html {
   overflow: hidden; 
   padding: 0 0 0 5%; 
   box-sizing: border-box; 
-  background-color: #fffef5;
+  background-color: linear-gradient(to bottom, #fffef5 10%, #ffffff 100%);
   display: flex;       /* makes .about-container's height resolvable so the stretched
                            image column and centered text column both work correctly */
   min-height: calc(100vh - var(--nav-height, 60px)); /* fills exactly the space below
@@ -930,6 +898,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: #ffffff;
 }
 
 .hero-section + * {
