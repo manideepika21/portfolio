@@ -799,6 +799,12 @@ html {
   box-shadow: 0 6px 16px rgba(8, 99, 8, 0.15);
 }
 
+.about-stat-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
 .about-stat i {
   font-size: 22px;
   color: #086308;
@@ -1556,7 +1562,6 @@ body {
 }
 
 /* == LAPTOP == */
-
 .laptop-wrapper {
     width: 100%;
     max-width: 560px;
