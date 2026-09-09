@@ -81,20 +81,20 @@
                             <i class="bi bi-patch-check-fill"></i>
                             <div class="about-stat-info">
                                 <span class="about-stat-num">2</span>
-                                <span class="about-stat-label">Certificates</span>
+                                <span class="about-stat-label">Certifications</span>
                             </div>
                         </div>
                         <div class="about-stat">
                             <i class="bi bi-bug-fill"></i>
                             <div class="about-stat-info">
-                                <span class="about-stat-num">100+</span>
+                                <span class="about-stat-num" id="stat-bugs-found">100+</span>
                                 <span class="about-stat-label">Bugs found</span>
                             </div>
                         </div>
                         <div class="about-stat">
                             <i class="bi bi-award-fill"></i>
                             <div class="about-stat-info">
-                                <span class="about-stat-num">10+</span>
+                                <span class="about-stat-num" id="stat-skill-badges">10+</span>
                                 <span class="about-stat-label">Skill badges</span>
                             </div>
                         </div>
@@ -142,7 +142,7 @@
             <div class="tw-flex tw-h-full tw-w-full tw-justify-around tw-gap-8 tw-rounded-xl tw-p-4 max-lg:tw-max-w-full max-lg:tw-flex-col">
                 <div class="reveal-up tw-flex tw-h-full tw-w-[50%] tw-place-content-center max-lg:tw-w-full lg:tw-sticky lg:tw-top-[20%]">
                     <h2 class="tw-text-center tw-text-4xl tw-font-semibold max-lg:tw-text-3xl">
-                        <p>3+ years</p>
+                        <p>2+ years</p>
                         <p>of</p>
                         Work Experience
                     </h2>
@@ -928,6 +928,217 @@
 
                     </a>
             </div>
+        </section>
+
+        <!-- FAQ + LET'S CONNECT SECTION -->
+        <section id="faq-contact" class="faq-contact-section">
+            <div class="faq-contact-container">
+
+                <!-- LEFT: WHY HIRE ME / FAQ -->
+                <div class="faq-side reveal-up">
+                    <div class="faq-heading">
+                        <div class="faq-heading-icon">
+                            <img
+                                src="./assets/images/thinking.png"
+                                alt="Thinking illustration"
+                            />
+                        </div>
+                        <div>
+                            <p class="faq-eyebrow">IN MY OWN WORDS</p>
+                            <h2>WHY HIRE ME?</h2>
+                        </div>
+                    </div>
+
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <button class="faq-question" type="button">
+                                <span>What kind of impact have you had in past roles?</span>
+                                <span class="faq-icon"><i class="bi bi-chevron-down"></i></span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>
+                                    At NC State, I analyzed 283 real-world API failures across
+                                    PyTorch, TensorFlow, and JAX and identified 126 bugs —
+                                    work that directly improved testing coverage for tools
+                                    used by millions of developers. At Cognizant, my
+                                    automated testing caught 200+ defects and helped cut
+                                    post-release issues by 80%. I look for the kind of
+                                    impact that's measurable, not just "helped out."
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" type="button">
+                                <span>What's a project you're most proud of, and why?</span>
+                                <span class="faq-icon"><i class="bi bi-chevron-down"></i></span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>
+                                    Ellipsis — an AI agent that produces fully automated
+                                    podcasts. What I'm proudest of isn't the audio generation
+                                    itself, it's the evaluation pipeline: five specialized AI
+                                    agents (a Scientist, Author, Critic, Psychologist, and a
+                                    "General Public" reviewer) each review the script before
+                                    it's finalized. It forced me to think hard about how you
+                                    actually validate AI-generated content instead of just
+                                    shipping it.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" type="button">
+                                <span>How do you approach finding and fixing hard bugs?</span>
+                                <span class="faq-icon"><i class="bi bi-chevron-down"></i></span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>
+                                    I don't wait for bugs to be reported — I go looking for
+                                    them. My research work built frameworks specifically to
+                                    detect compiler inconsistencies and reproduce failures
+                                    automatically in deep learning systems. That mindset —
+                                    assume something's broken until proven otherwise — is
+                                    what let me find 100+ bugs across major ML frameworks
+                                    and open-source projects.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" type="button">
+                                <span>What's it like working with you day-to-day?</span>
+                                <span class="faq-icon"><i class="bi bi-chevron-down"></i></span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>
+                                    I communicate early rather than sit on a problem — if I'm
+                                    blocked or see a risk, I flag it before it becomes a bigger
+                                    issue. As a TA, I built a defect-prediction model that hit 95%
+                                    accuracy, but the part I actually enjoyed most was translating
+                                    that into feedback students could act on. I care about the
+                                    same thing on a team: not just having the right answer, but
+                                    making sure it's useful to the people around me.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" type="button">
+                                <span>What are you looking for in your next role?</span>
+                                <span class="faq-icon"><i class="bi bi-chevron-down"></i></span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>
+                                    I want to keep working at the intersection of AI/ML and
+                                    reliability — whether that's building AI-powered
+                                    features, testing systems that need to be trustworthy,
+                                    or improving cloud infrastructure. I'm open to hybrid or
+                                    remote roles in the US, and I'm most energized by teams
+                                    that care as much about whether something works as they
+                                    do about shipping it.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT: LET'S CONNECT -->
+                <div class="connect-side reveal-up">
+                    <!-- LAPTOP -->
+                    <div class="laptop-wrapper">
+                        <div class="laptop-screen">
+                            <div class="laptop-content">
+                                <h1> Let's work <strong>together!</strong> </h1>
+                                <p class="connect-subtitle"> Have an opportunity, project, or just want to talk? </p>
+
+                                <!-- TERMINAL HEADER -->
+                                <div class="terminal-window">
+                                    <div class="terminal-dots">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+
+                                    <div class="terminal-code">
+                                        <div>&gt; status: <span>available for opportunities</span></div>
+                                        <div>&gt; location: <span>open to hybrid / remote opportunities in US</span></div>
+                                        <div>&gt; focus: <span>software engineering &amp; ML systems</span></div>
+                                        <div>&gt; stack: <span>Python, C++, React, ML, DevOps</span></div>
+                                        <div>&gt; executing connection_greeting.sh...</div>
+                                    </div>
+                                </div>
+
+                                <!-- CONNECT CONTENT -->
+                                <div class="connect-content">
+                                    <!-- CONTACT FORM -->
+                                    <form
+                                        class="laptop-contact-form"
+                                        action="https://formspree.io/f/xoeqylnb"
+                                        method="POST"
+                                    >
+                                        <!-- NAME + EMAIL -->
+                                        <div class="form-row">
+                                            <input
+                                                type="text"
+                                                name="name"
+                                                placeholder="Your Name"
+                                                autocomplete="name"
+                                                required
+                                            >
+
+                                            <input
+                                                type="email"
+                                                name="email"
+                                                placeholder="Your Email Address"
+                                                autocomplete="email"
+                                                required
+                                            >
+
+                                        </div>
+
+                                        <!-- MESSAGE -->
+                                        <textarea
+                                            name="message"
+                                            placeholder="Message..."
+                                            rows="2"
+                                            required
+                                        ></textarea>
+
+                                        <!-- SOCIALS + SEND -->
+                                        <div class="form-bottom">
+                                            <div class="form-socials">
+                                                <a
+                                                    href="https://www.linkedin.com/in/mmyaka/"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    aria-label="LinkedIn"
+                                                >
+                                                    <i class="bi bi-linkedin"></i>
+                                                </a>
+
+                                                <a
+                                                    href="https://github.com/manideepika21"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    aria-label="GitHub"
+                                                >
+                                                    <i class="bi bi-github"></i>
+                                                </a>
+
+                                            </div>
+
+                                            <button type="submit">
+                                                Send Message →
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="laptop-base"></div>
+                    </div>
+                </div>
         </section>
 
         <section class="w-full py-16 bg-white">

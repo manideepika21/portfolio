@@ -551,6 +551,138 @@ function updateBugStats() {
     }
 }
 
+/* === CONTACT FORM === */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const contactForm = document.getElementById(
+        "portfolio-contact-form"
+    );
+
+    if (!contactForm) return;
+    contactForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const name = document.getElementById("contact-name").value;
+        const email =
+            document.getElementById("contact-email").value;
+
+        const phone =
+            document.getElementById("contact-phone").value;
+
+        const company =
+            document.getElementById("contact-company").value;
+
+        const interest =
+            document.querySelector(
+                'input[name="interest"]:checked'
+            )?.value || "Not specified";
+
+        const message =
+            document.getElementById("contact-message").value;
+
+
+        const subject =
+            encodeURIComponent(
+                `Portfolio Contact - ${name}`
+            );
+
+
+        const body =
+            encodeURIComponent(
+`Hi Manideepika,
+
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Company: ${company}
+Interested in: ${interest}
+
+Message:
+${message}
+
+Thank you!`
+            );
+
+
+        window.location.href =
+            `mailto:mmyaka@ncsu.edu?subject=${subject}&body=${body}`;
+
+    });
+
+});
+
+// FAQ accordion toggle
+document.addEventListener("DOMContentLoaded", () => {
+    const faqItems = document.querySelectorAll(".faq-item");
+
+    faqItems.forEach(item => {
+        const question = item.querySelector(".faq-question");
+        const answer = item.querySelector(".faq-answer");
+
+        question.addEventListener("click", () => {
+            const isOpen = item.classList.contains("active");
+
+            // close all other items (accordion behavior)
+            faqItems.forEach(other => {
+                other.classList.remove("active");
+                other.querySelector(".faq-answer").style.maxHeight = null;
+            });
+
+            // open this one if it wasn't already open
+            if (!isOpen) {
+                item.classList.add("active");
+                answer.style.maxHeight = answer.scrollHeight + "px";
+            }
+        });
+    });
+});
+
+/* =========================================================
+   HERO STATS: auto-computed from other pages
+========================================================= */
+async function updateSkillBadgeStat() {
+    const el = document.getElementById("stat-skill-badges");
+    if (!el) return;
+
+    try {
+        const res = await fetch("./skill_badges.html");
+        const html = await res.text();
+        const doc = new DOMParser().parseFromString(html, "text/html");
+        const count = doc.querySelectorAll(".badge.earned").length;
+        if (count > 0) el.textContent = `${count}+`;
+    } catch (err) {
+        console.warn("Could not compute skill badge count:", err);
+    }
+}
+
+async function updateBugsFoundStat() {
+    const el = document.getElementById("stat-bugs-found");
+    if (!el) return;
+
+    try {
+        const [tfHtml, ptHtml] = await Promise.all([
+            fetch("./tensorflow_bugs.html").then(r => r.text()),
+            fetch("./pytorch_bugs.html").then(r => r.text()),
+        ]);
+
+        // Each bug entry has exactly one "status:" field in its object literal
+        const countEntries = (html) => (html.match(/status:\s*"/g) || []).length;
+        const total = countEntries(tfHtml) + countEntries(ptHtml);
+
+        if (total > 0) el.textContent = `${total}+`;
+    } catch (err) {
+        console.warn("Could not compute bugs found count:", err);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Only runs on the homepage, where these elements exist
+    if (document.getElementById("stat-skill-badges") || document.getElementById("stat-bugs-found")) {
+        updateSkillBadgeStat();
+        updateBugsFoundStat();
+    }
+});
+
 document.addEventListener("DOMContentLoaded", () => {
 
     // Guard: this block is only meaningful on skill_badges.html (the
