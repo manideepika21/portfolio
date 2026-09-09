@@ -861,7 +861,7 @@ html {
   overflow: hidden; 
   padding: 0 0 0 5%; 
   box-sizing: border-box; 
-  background-color: linear-gradient(to bottom, #fffef5 10%, #ffffff 100%);
+  background-color: linear-gradient(to bottom, #fffef5 0%, #ffffff 100%);
   display: flex;       /* makes .about-container's height resolvable so the stretched
                            image column and centered text column both work correctly */
   min-height: calc(100vh - var(--nav-height, 60px)); /* fills exactly the space below
@@ -922,7 +922,7 @@ body {
 
 /* ==================== BUGS SECTION ==================== */
 .bugs-dashboard {
-    background: #f3f4f6;
+    background: #fffef5;
     color: #111827;
     padding: 14px 14px;
     box-sizing: border-box;
@@ -1103,7 +1103,7 @@ body {
     --c4: #f59e0b; 
     --c5: #34d399;
     --c6: #c58dc0;
-    background: var(--surface);
+    background: #fffef5;
     color: var(--text-primary);
     padding: 28px 20px 60px;
     border-radius: 18px;
